@@ -1,0 +1,26 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 19px;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background:  linear-gradient(180deg, $color-onyx, $color-carbon-black, $color-onyx);
+}
+#app {
+  width: 80%;
+  max-width: 1280px;
+  background-color: $color-shadow-gray;
+  min-height: 100vh;
+    
+}
