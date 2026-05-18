@@ -27,6 +27,17 @@
         align-self: center;
         height: 3.75rem;
         background-color: $color-carbon-black;
+        gap: 1rem;
+        user-select: none;
+
+        @media (max-width: $bp-md) {
+            padding: 6px 16px;
+        }
+
+        @media (max-width: $bp-sm) {
+            padding: 6px 12px;
+            gap: 0.5rem;
+        }
 
         & h1 {
             font-family: 'Oxanium', cursive;
@@ -41,6 +52,10 @@
                 flex-direction: row;
                 gap: 1.5rem;
                 list-style-type: none;
+
+                @media (max-width: $bp-sm) {
+                    gap: 0.75rem;
+                }
 
                 & li {
                     & button {
@@ -73,6 +88,10 @@
                 color: $color-text;
                 opacity: 0.7;
                 text-shadow: $glow-25-white;
+
+                @media (max-width: $bp-md) {
+                    display: none;
+                }
             }
             & a {
                 & img {
