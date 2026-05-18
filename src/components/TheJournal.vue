@@ -25,22 +25,21 @@
                 <div class="mood-wrapper">
                     <h3>MOOD</h3>
                     <div class="mood-inputs">
-                        <div class="button-wrapper">
-                            <button id="mood-10"></button>
-                            <button id="mood-20"></button>
-                            <button id="mood-30"></button>
-                            <button id="mood-40"></button>
-                            <button id="mood-50"></button>
-                            <button id="mood-60"></button>
-                            <button id="mood-70"></button>
-                            <button id="mood-80"></button>
-                            <button id="mood-90"></button>
-                            <button id="mood-100"></button>
+                        <div class="button-wrapper" @mouseleave="hoveredMood = 0">
+                            <button
+                                v-for="value in [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]"
+                                :key="value"
+                                type="button"
+                                :class="{ active: value <= (hoveredMood > 0 ? hoveredMood : selectedMood) }"
+                                @mouseover="hoveredMood = value"
+                                @click="handleMoodClick(value)"
+                                @dblclick="handleMoodDblClick(value)"
+                            ></button>
                         </div>
                         <div>
-                            <p>rough</p>
-                            <p>okay</p>
-                            <p>great</p>
+                            <p :class="{ active: selectedMood > 0 && selectedMood <= 30 }">rough</p>
+                            <p :class="{ active: selectedMood > 30 && selectedMood <= 70 }">okay</p>
+                            <p :class="{ active: selectedMood > 70 }">great</p>
                         </div>
                     </div>
                     <h3>{{ getMood() }}</h3>
@@ -114,12 +113,14 @@ section {
                 border: none;
                 background: none;
                 border-bottom: 1px solid $color-iron-gray;
+                color: $color-text;
 
                 &::placeholder {
                     color: $color-text;
                 }
-                :focus {
+                &:focus {
                     outline: none;
+                    border-radius: 0;
                 }
             }
 
@@ -131,15 +132,14 @@ section {
                 resize: none;
                 min-height: 360px;
                 background: none;
+                color: $color-text;
 
                  &::placeholder {
                     color: $color-text;
                 }
-                :focus {
+                &:focus {
                     outline: none;
-                }
-                :-moz-focusring {
-                    color: transparent;
+                    border-radius: 0;
                 }
             }
         }
@@ -181,6 +181,11 @@ section {
                             font-family: $ibmpm;
                             font-size: $fs-small;
                             color: $color-iron-gray;
+
+                            &.active {
+                                color: $color-text;
+                                text-shadow: $glow-50-white;
+                            }
                         }
                     }
 
@@ -200,6 +205,11 @@ section {
 
                             &:hover {
                                 background-color: $color-text;
+                            }
+
+                            &.active {
+                                background-color: $color-text;
+                                box-shadow: $glow-50-white;
                             }
                         }
                     }
@@ -233,6 +243,21 @@ section {
 </style>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
+const selectedMood = ref<number>(0);
+const hoveredMood = ref<number>(0);
+
+function handleMoodClick(value: number) {
+    selectedMood.value = value;
+}
+
+function handleMoodDblClick(value: number) {
+    if (value === selectedMood.value) {
+        selectedMood.value = 0;
+    }
+}
+
 function getDay() {
     return "10";
 }
@@ -246,7 +271,6 @@ function getYear() {
 }
 
 function getMood() {
-    return "70";
+    return selectedMood.value === 0 ? '' : String(selectedMood.value);
 }
-
 </script>
