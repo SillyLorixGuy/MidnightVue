@@ -3,15 +3,15 @@
         <section class="date-section">
             <div>
                 <p>DAY</p>
-                <p>{{ getDay() }}</p>
+                <p>{{ getCurrentDay() }}</p>
             </div>
             <div>
                 <p>MONTH</p>
-                <p>{{ getMonth() }} </p>
+                <p>{{ getCurrentMonth() }} </p>
             </div>
             <div>
                 <p>YEAR</p>
-                <p>{{ getYear() }}</p>
+                <p>{{ getCurrentYear() }}</p>
             </div>
         </section>
 
@@ -55,28 +55,50 @@
 section {
     display: flex;
     flex-direction: row;
-    align-items: space-between;
+    align-items: stretch;
     background-color: $color-carbon-black;
     max-width: 1080px;
     margin: 0 auto;
+    width: 90%;
     padding: 12px;
     margin-top: 2rem;
     border-radius: 12px;
+
+    @media (max-width: $bp-md) {
+        flex-direction: column;
+        margin: 1rem;
+        margin-top: 1rem;
+    }
 
     & .date-section {
         display: flex;
         align-self: flex-start;
         flex-direction: column;
         min-width: 156px;
+        max-width: 200px;
         gap: 0.5rem;
         padding: 12px;
         margin: 0;
+
+        @media (max-width: $bp-md) {
+            flex-direction: row;
+            align-self: stretch;
+            justify-content: space-between;
+            min-width: 0;
+            width: 100%;
+            gap: 0.75rem;
+            padding: 6px 12px;
+        }
 
         & div {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             border-bottom: 1px solid $color-iron-gray;
+
+            @media (max-width: $bp-md) {
+                flex: 1;
+            }
 
             & p {
                 font-family: $ibmpm;
@@ -87,6 +109,11 @@ section {
 
                 &:nth-child(2) {
                     padding-bottom: 4px;
+                }
+
+                @media (max-width: $bp-md) {
+                    width: auto;
+                    max-width: none;
                 }
             }
         }
@@ -141,6 +168,10 @@ section {
                 :-moz-focusring {
                     color: transparent;
                 }
+
+                @media (max-width: $bp-md) {
+                    min-height: 240px;
+                }
             }
         }
 
@@ -151,12 +182,28 @@ section {
             align-items: center;
             padding-top: 12px;
             border-top: 2px solid $color-text;
+            gap: 12px;
+
+            @media (max-width: $bp-md) {
+                flex-direction: column;
+                align-items: stretch;
+            }
 
             & .mood-wrapper {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 padding: 6px;
+                flex: 1;
+                min-width: 0;
+                max-width: 400px;
+
+                @media (max-width: $bp-md) {
+                    padding: 0;
+                    justify-content: space-between;
+                    gap: 8px;
+                    max-width: none;
+                }
 
                 & h3 {
                     font-family: $ibmpm;
@@ -169,8 +216,14 @@ section {
                 & .mood-inputs {
                     display: flex;
                     flex-direction: column;
-                    gap: 6px;
+                    gap: 4px;
                     padding: 0 12px;
+                    flex: 1;
+                    min-width: 0;
+
+                    @media (max-width: $bp-md) {
+                        padding: 0 8px;
+                    }
 
                     & div {
                         display: flex;
@@ -188,7 +241,11 @@ section {
                     & .button-wrapper {
                         display: flex;
                         flex-direction: row;
-                        gap: 6px;
+                        gap: 4px;
+
+                        @media (max-width: $bp-lg) {
+                            gap: 4px;
+                        }
 
                         & button {
                             width: 30px;
@@ -200,6 +257,17 @@ section {
 
                             &:hover {
                                 background-color: $color-text;
+                            }
+
+                            @media (max-width: $bp-lg) {
+                                flex: 1;
+                                width: auto;
+                                min-width: 0;
+                            }
+
+                            @media (max-width: $bp-md) {
+                                height: 14px;
+                                border-radius: 2px;
                             }
                         }
                     }
@@ -226,6 +294,10 @@ section {
                     background-color: $color-gunmetal;
                     text-shadow: none;
                 }
+
+                @media (max-width: $bp-md) {
+                    padding: 10px 12px;
+                }
         }
     }
 }
@@ -233,15 +305,15 @@ section {
 </style>
 
 <script setup lang="ts">
-function getDay() {
+function getCurrentDay() {
     return "10";
 }
 
-function getMonth() {
+function getCurrentMonth() {
     return "02";
 }
 
-function getYear() {
+function getCurrentYear() {
     return "2026";
 }
 

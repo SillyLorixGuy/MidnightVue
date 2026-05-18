@@ -18,9 +18,29 @@ body {
     background:  linear-gradient(180deg, $color-onyx, $color-carbon-black, $color-onyx);
 }
 #app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center; 
+  justify-content: center;  
+  flex-direction: column;
+}
+main {
   width: 80%;
   max-width: 1280px;
   background-color: $color-shadow-gray;
-  min-height: 100vh;
-    
+  justify-self: center;
+  min-height: 90vh;
+
+  @media (max-width: $bp-lg) {
+    width: 90%;
+  }
+
+  @media (max-width: $bp-md) {
+    width: 95%;
+  }
+
+  @media (max-width: $bp-sm) {
+    width: 100%;
+  }
 }
