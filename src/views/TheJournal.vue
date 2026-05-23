@@ -18,8 +18,8 @@
 
         <form class="entry-form">
             <div class="text-inputs">
-                <input type="text" placeholder="Got a title?">
-                <textarea name="" id="" placeholder="What happened today?"></textarea>
+                <input type="text" placeholder="Got a title?" v-model="title">
+                <textarea name="" id="" placeholder="What happened today?" v-model="content"></textarea>
             </div>
             <div class="bottom-wrapper">
                 <div class="mood-wrapper">
@@ -44,7 +44,8 @@
                     </div>
                     <h3>{{ getMood() || "00"}}</h3>
                 </div>
-                <button id="submit-btn">SUBMIT</button>
+                <p v-if="submitError" class="submit-error">{{ submitError }}</p>
+                <button id="submit-btn" type="button" @click="onSubmit" :disabled="submitting">SUBMIT</button>
             </div>
         </form>
     </section>
@@ -308,9 +309,21 @@ section {
                     text-shadow: none;
                 }
 
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
                 @media (max-width: $bp-md) {
                     padding: 10px 12px;
                 }
+            }
+
+            & .submit-error {
+                color: #ff8080;
+                font-family: $ibmpm;
+                font-size: $fs-small;
+                margin-top: 0.5rem;
             }
         }
     }
@@ -319,9 +332,32 @@ section {
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useEntries } from '@/composables/useEntries';
+
+const { createEntry } = useEntries();
 
 const selectedMood = ref<number>(0);
 const hoveredMood = ref<number>(0);
+const title = ref<string>('');
+const content = ref<string>('');
+const submitting = ref(false);
+const submitError = ref<string | null>(null);
+
+async function onSubmit() {
+    submitting.value = true;
+    submitError.value = null;
+    const { error } = await createEntry({
+        title: title.value,
+        content: content.value,
+        mood: selectedMood.value > 0 ? selectedMood.value : null,
+    });
+    submitting.value = false;
+    if (error) { submitError.value = error.message; return; }
+    // Reset form
+    title.value = '';
+    content.value = '';
+    selectedMood.value = 0;
+}
 
 function handleMoodClick(value: number) {
     selectedMood.value = value;
