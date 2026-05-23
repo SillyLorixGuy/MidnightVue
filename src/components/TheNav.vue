@@ -3,9 +3,9 @@
         <h1>Midnight</h1>
         <nav>
             <ul>
-                <li><button :style="{ opacity: getView() == 'JOURNAL' ? 1 : 0.7 }">JOURNAL</button></li>
-                <li><button :style="{ opacity: getView() == 'ENTRIES' ? 1 : 0.7 }">ENTRIES</button></li>
-                <li><button :style="{ opacity: getView() == 'STATS' ? 1 : 0.7 }">STATS</button></li>
+                <li><RouterLink to="/journal" class="nav-link">JOURNAL</RouterLink></li>
+                <li><RouterLink to="/entries" class="nav-link">ENTRIES</RouterLink></li>
+                <li><span class="nav-link is-disabled" aria-disabled="true">STATS</span></li>
             </ul>
         </nav>
         <section>
@@ -72,7 +72,7 @@
                 }
 
                 & li {
-                    & button {
+                    & .nav-link {
                         font-family: $ibmpm;
                         font-size: $fs-small;
                         color: $color-text;
@@ -82,9 +82,23 @@
                         cursor: pointer;
                         background-color: transparent;
                         text-shadow: $glow-25-white;
+                        text-decoration: none;
+                        display: inline-block;
+
                         &:hover {
                             text-shadow: $glow-50-white;
                             opacity: 1;
+                        }
+
+                        &.router-link-active {
+                            opacity: 1;
+                            text-shadow: $glow-50-white;
+                        }
+
+                        &.is-disabled {
+                            opacity: 0.4;
+                            pointer-events: none;
+                            cursor: default;
                         }
                     }
                 }
@@ -255,7 +269,6 @@
     import { ref } from 'vue'
     import { useRouter } from 'vue-router'
     import { useAuth } from '@/composables/useAuth'
-    import { getView } from '../router/main.ts'
 
     const open = ref(false)
     const router = useRouter()
