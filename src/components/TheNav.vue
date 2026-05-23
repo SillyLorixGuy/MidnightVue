@@ -107,21 +107,146 @@
                     display: none;
                 }
             }
-            & a {
-                & img {
-                    width: 2.2rem;
-                    height: 2.2rem;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    border: 2px solid $color-text;
-                    box-shadow: $glow-25-white;
-                    transition: ease-in-out 0.3s;
+            & .profile-dropdown {
+                position: relative;
+                outline: none;
 
-                    &:hover {
+                & .profile-button {
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+                    line-height: 0;
+
+                    & img {
+                        width: 2.2rem;
+                        height: 2.2rem;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: 2px solid $color-text;
+                        box-shadow: $glow-25-white;
+                        transition: box-shadow 0.25s ease-in-out;
+                    }
+
+                    &:hover img {
                         box-shadow: $glow-50-white;
                     }
                 }
+
+                & .profile-menu {
+                    position: absolute;
+                    top: calc(100% + 0.75rem);
+                    right: 0;
+                    min-width: 14rem;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    background: $color-shadow-gray-2;
+                    border: 1px solid $color-iron-gray;
+                    border-radius: 4px;
+                    box-shadow:
+                        0 8px 24px rgba(0, 0, 0, 0.55),
+                        0 0 0.5em rgba(255, 255, 255, 0.06);
+                    font-family: $ibmpm;
+                    font-size: $fs-small;
+                    z-index: 20;
+                    overflow: hidden;
+                    animation: profile-menu-in 140ms ease-out;
+
+                    // Tiny notch pointing up to the avatar
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: -5px;
+                        right: 0.9rem;
+                        width: 8px;
+                        height: 8px;
+                        background: $color-shadow-gray-2;
+                        border-top: 1px solid $color-iron-gray;
+                        border-left: 1px solid $color-iron-gray;
+                        transform: rotate(45deg);
+                    }
+
+                    & li {
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                    }
+
+                    &__user {
+                        padding: 0.6rem 0.85rem;
+                        color: $color-iron-gray;
+                        background: $color-carbon-black;
+                        border-bottom: 1px solid $color-iron-gray;
+                        letter-spacing: 0.02em;
+                        word-break: break-all;
+                        font-size: 0.72rem;
+                        cursor: default;
+                        user-select: text;
+
+                        &::before {
+                            content: "[ ";
+                            opacity: 0.55;
+                        }
+                        &::after {
+                            content: " ]";
+                            opacity: 0.55;
+                        }
+                    }
+
+                    & button,
+                    & a {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        width: 100%;
+                        padding: 0.55rem 0.85rem;
+                        background: none;
+                        border: none;
+                        border-radius: 0;
+                        text-align: left;
+                        text-decoration: none;
+                        font-family: $ibmpm;
+                        font-size: $fs-small;
+                        color: $color-text;
+                        opacity: 0.7;
+                        cursor: pointer;
+                        text-shadow: none;
+                        transition: opacity 120ms ease, text-shadow 120ms ease;
+
+                        &::before {
+                            content: "›";
+                            display: inline-block;
+                            width: 0.7rem;
+                            color: $color-iron-gray;
+                            transition: transform 140ms ease, color 140ms ease;
+                        }
+
+                        &:hover,
+                        &:focus-visible {
+                            opacity: 1;
+                            text-shadow: $glow-25-white;
+                            outline: none;
+
+                            &::before {
+                                color: $color-text;
+                                transform: translateX(2px);
+                            }
+                        }
+                    }
+                }
             }
+        }
+    }
+
+    @keyframes profile-menu-in {
+        from {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 </style>
