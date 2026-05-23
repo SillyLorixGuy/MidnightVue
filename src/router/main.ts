@@ -43,3 +43,10 @@ router.beforeEach((to) => {
 })
 
 export default router
+
+export function getView(): string {
+  const path = router.currentRoute.value.path
+  if (path.startsWith('/entries')) return 'ENTRIES'
+  if (path.startsWith('/stats')) return 'STATS'
+  return 'JOURNAL'
+}
