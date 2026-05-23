@@ -31,8 +31,12 @@ const router = createRouter({
 
 const AUTH_ROUTES = new Set(['/login', '/signup', '/forgot-password', '/reset-password'])
 
-router.beforeEach((to) => {
-  const { isAuthenticated } = useAuth()
+router.beforeEach(async (to) => {
+  const { isAuthenticated, waitForSession } = useAuth()
+  // Wait for the initial session restore from localStorage before deciding.
+  // Without this, the first navigation after a page reload sees an empty
+  // session and bounces authenticated users to /login.
+  await waitForSession()
   if (to.meta.requiresAuth && !isAuthenticated.value) {
     return { path: '/login', query: { redirect: to.fullPath } }
   }

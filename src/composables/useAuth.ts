@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 
 const session = ref<Session | null>(null)
 const user = ref<User | null>(null)
-let initialized = false
+let sessionReady: Promise<void> | null = null
 
 function origin(): string {
   return typeof window !== 'undefined' ? window.location.origin : ''
@@ -47,10 +47,15 @@ function applySession(s: Session | null) {
 }
 
 export function useAuth() {
-  if (!initialized) {
-    initialized = true
-    supabase.auth.getSession().then(({ data }) => applySession(data.session))
+  if (!sessionReady) {
+    sessionReady = supabase.auth.getSession().then(({ data }) => {
+      applySession(data.session)
+    })
     supabase.auth.onAuthStateChange((_event, s) => applySession(s))
+  }
+
+  function waitForSession(): Promise<void> {
+    return sessionReady ?? Promise.resolve()
   }
 
   async function signUp(input: { email: string; password: string; username: string }) {
@@ -101,6 +106,7 @@ export function useAuth() {
     requestPasswordReset,
     setNewPassword,
     ensureProfile,
+    waitForSession,
     // exposed for tests only
     _onAuthChange: (_event: string, s: Session | null) => applySession(s),
   }
