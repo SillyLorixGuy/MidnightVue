@@ -19,3 +19,21 @@ Add the following to Authentication → URL Configuration → Redirect URLs:
 - `http://localhost:5173/journal`
 - `http://localhost:5173/reset-password`
 - (Plus production URLs when deploying.)
+
+## OAuth provider setup (one-time per provider)
+
+### Google
+1. Go to https://console.cloud.google.com → APIs & Services → Credentials.
+2. Create OAuth 2.0 Client ID, type "Web application".
+3. Authorized redirect URI: `https://<your-project-ref>.supabase.co/auth/v1/callback`.
+4. Copy Client ID and Client Secret into Supabase Dashboard → Authentication → Providers → Google.
+
+### GitHub
+1. https://github.com/settings/developers → New OAuth App.
+2. Authorization callback URL: `https://<your-project-ref>.supabase.co/auth/v1/callback`.
+3. Copy Client ID + generate a Client Secret → paste into Supabase → Authentication → Providers → GitHub.
+
+### Discord
+1. https://discord.com/developers/applications → New Application → OAuth2.
+2. Add redirect: `https://<your-project-ref>.supabase.co/auth/v1/callback`.
+3. Copy Client ID + Client Secret → paste into Supabase → Authentication → Providers → Discord.
