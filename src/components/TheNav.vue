@@ -10,7 +10,21 @@
         </nav>
         <section>
             <p>{{ getDate() }}</p>
-            <a href=""><img :src="getPfp()" alt=""></a>
+            <div class="profile-dropdown" @blur="open = false" tabindex="0">
+                <button class="profile-button" @click="open = !open" aria-haspopup="true" :aria-expanded="open">
+                    <img :src="getPfp()" alt="">
+                </button>
+                <ul v-if="open" class="profile-menu" role="menu">
+                    <template v-if="isAuthenticated">
+                        <li class="profile-menu__user">{{ user?.email ?? 'Signed in' }}</li>
+                        <li><button @click="doSignOut">Sign out</button></li>
+                    </template>
+                    <template v-else>
+                        <li><RouterLink to="/login" @click="open = false">Log in</RouterLink></li>
+                        <li><RouterLink to="/signup" @click="open = false">Create account</RouterLink></li>
+                    </template>
+                </ul>
+            </div>
         </section>
     </section>
 </template>
@@ -113,6 +127,21 @@
 </style>
 
 <script setup lang="ts">
+    import { ref } from 'vue'
+    import { useRouter } from 'vue-router'
+    import { useAuth } from '@/composables/useAuth'
+    import { getView } from '../router/main.ts'
+
+    const open = ref(false)
+    const router = useRouter()
+    const { isAuthenticated, user, signOut } = useAuth()
+
+    async function doSignOut() {
+        await signOut()
+        open.value = false
+        router.push('/login')
+    }
+
     function getDate() {
         return "MON 10.02.2026";
     }
@@ -120,6 +149,4 @@
     function getPfp() {
         return './pfp.png';
     }
-
-    import { getView } from '../router/main.ts';
 </script>
