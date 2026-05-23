@@ -1,0 +1,86 @@
+.auth {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: $color-shadow-gray;
+  border-radius: 10px;
+  color: $color-text;
+  font-family: $ibmpm;
+
+  h1 {
+    font-family: $oxanium;
+    font-size: $fs-h1;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .oauth {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    button {
+      padding: 0.6rem;
+      background: $color-iron-gray;
+      color: $color-text;
+      border: none;
+      border-radius: 5px;
+      font-family: $ibmpm;
+      cursor: pointer;
+
+      &:hover { background: $color-gunmetal; }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: $fs-small;
+    }
+
+    input {
+      padding: 0.5rem;
+      background: $color-shadow-gray-2;
+      color: $color-text;
+      border: 1px solid $color-iron-gray;
+      border-radius: 5px;
+      font-family: $ibmpm;
+      font-size: $fs-p;
+    }
+
+    button[type='submit'] {
+      margin-top: 0.5rem;
+      padding: 0.6rem;
+      background: $color-text;
+      color: $color-onyx;
+      border: none;
+      border-radius: 5px;
+      font-family: $oxanium;
+      font-size: $fs-p;
+      cursor: pointer;
+
+      &:disabled { opacity: 0.6; cursor: progress; }
+    }
+  }
+
+  .error {
+    margin-top: 1rem;
+    color: #ff8080;
+    font-size: $fs-small;
+  }
+
+  .links {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: $fs-small;
+
+    a { color: $color-text; text-decoration: underline; }
+  }
+}
