@@ -97,3 +97,37 @@ describe('useAuth', () => {
     expect(isAuthenticated.value).toBe(false)
   })
 })
+
+describe('useAuth.ensureProfile', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  it('inserts a generated username when profile is missing', async () => {
+    const single = vi.fn().mockResolvedValue({ data: null, error: null })
+    const insert = vi.fn().mockResolvedValue({ error: null })
+    ;(supabase.from as any).mockReturnValue({
+      select: () => ({ eq: () => ({ single }) }),
+      insert,
+    })
+
+    const { ensureProfile } = useAuth() as any
+    await ensureProfile({ id: 'u-abcdef01-2345-...' })
+
+    expect(insert).toHaveBeenCalledTimes(1)
+    const arg = insert.mock.calls[0][0]
+    expect(arg.id).toBe('u-abcdef01-2345-...')
+    expect(arg.username).toMatch(/^user_[a-z0-9]{6}$/)
+  })
+
+  it('is a no-op when profile already exists', async () => {
+    const single = vi.fn().mockResolvedValue({ data: { id: 'u1', username: 'alice' }, error: null })
+    const insert = vi.fn()
+    ;(supabase.from as any).mockReturnValue({
+      select: () => ({ eq: () => ({ single }) }),
+      insert,
+    })
+
+    const { ensureProfile } = useAuth() as any
+    await ensureProfile({ id: 'u1' })
+    expect(insert).not.toHaveBeenCalled()
+  })
+})

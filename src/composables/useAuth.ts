@@ -10,9 +10,40 @@ function origin(): string {
   return typeof window !== 'undefined' ? window.location.origin : ''
 }
 
+function generateUsername(userId: string): string {
+  // 6 lowercase alphanumeric chars derived from the user id
+  const hash = userId.replace(/-/g, '').toLowerCase().slice(0, 6)
+  return `user_${hash}`
+}
+
+async function ensureProfile(u: { id: string }, attempt = 0): Promise<void> {
+  try {
+    const { data } = await supabase
+      .from('profiles')
+      .select('id')
+      .eq('id', u.id)
+      .single()
+    if (data) return
+    const username = attempt === 0
+      ? generateUsername(u.id)
+      : `${generateUsername(u.id)}${attempt}`
+    const { error } = await supabase.from('profiles').insert({ id: u.id, username })
+    if (error && attempt < 5) {
+      // Likely a username collision — retry with a suffix.
+      return ensureProfile(u, attempt + 1)
+    }
+  } catch {
+    // Silently swallow — profile bootstrap failure should never block auth flow.
+  }
+}
+
 function applySession(s: Session | null) {
   session.value = s
   user.value = s?.user ?? null
+  if (s?.user) {
+    // Fire-and-forget; we don't block UI on profile bootstrap.
+    void ensureProfile(s.user)
+  }
 }
 
 export function useAuth() {
@@ -69,6 +100,7 @@ export function useAuth() {
     signOut,
     requestPasswordReset,
     setNewPassword,
+    ensureProfile,
     // exposed for tests only
     _onAuthChange: (_event: string, s: Session | null) => applySession(s),
   }
