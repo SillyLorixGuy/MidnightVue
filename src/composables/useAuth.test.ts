@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { ref } from 'vue'
 
 vi.mock('@/lib/supabase', () => {
   const listeners: Array<(event: string, session: any) => void> = []
