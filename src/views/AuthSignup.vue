@@ -78,3 +78,4 @@ async function oauth(provider: 'google' | 'github' | 'discord') {
 <style lang="scss" scoped>
 @use '@/assets/scss/auth-form' as *;
 </style>
+

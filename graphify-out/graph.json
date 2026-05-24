@@ -1,0 +1,576 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "entries_page_supabase_backend_initiative",
+        "label": "Entries Page + Supabase Backend Initiative",
+        "nodes": [
+          "plan_entries_page_supabase",
+          "spec_entries_page_design",
+          "supabase_readme_setup"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "docs/superpowers/plans/2026-05-23-entries-page.md"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "vite.config.ts",
+      "file_type": "code",
+      "source_file": "vite.config.ts",
+      "source_location": "L1",
+      "id": "vite_config_ts",
+      "community": 6
+    },
+    {
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "vitest.config.ts",
+      "source_location": "L1",
+      "id": "vitest_config_ts",
+      "community": 7
+    },
+    {
+      "label": "env.d.ts",
+      "file_type": "code",
+      "source_file": "src\\env.d.ts",
+      "source_location": "L1",
+      "id": "src_env_d_ts",
+      "community": 8
+    },
+    {
+      "label": "main.ts",
+      "file_type": "code",
+      "source_file": "src\\main.ts",
+      "source_location": "L1",
+      "id": "src_main_ts",
+      "community": 9
+    },
+    {
+      "label": "EntryCard.test.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\EntryCard.test.ts",
+      "source_location": "L1",
+      "id": "src_components_entrycard_test_ts",
+      "community": 10
+    },
+    {
+      "label": "useAnchors.test.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAnchors.test.ts",
+      "source_location": "L1",
+      "id": "src_composables_useanchors_test_ts",
+      "community": 11
+    },
+    {
+      "label": "useAnchors.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAnchors.ts",
+      "source_location": "L1",
+      "id": "src_composables_useanchors_ts",
+      "community": 2
+    },
+    {
+      "label": "currentUserId()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAnchors.ts",
+      "source_location": "L4",
+      "id": "useanchors_currentuserid",
+      "community": 2
+    },
+    {
+      "label": "useAnchors()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAnchors.ts",
+      "source_location": "L9",
+      "id": "useanchors_useanchors",
+      "community": 2
+    },
+    {
+      "label": "useAuth.test.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAuth.test.ts",
+      "source_location": "L1",
+      "id": "src_composables_useauth_test_ts",
+      "community": 12
+    },
+    {
+      "label": "useAuth.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L1",
+      "id": "src_composables_useauth_ts",
+      "community": 0
+    },
+    {
+      "label": "origin()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L9",
+      "id": "useauth_origin",
+      "community": 0
+    },
+    {
+      "label": "generateUsername()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L13",
+      "id": "useauth_generateusername",
+      "community": 0
+    },
+    {
+      "label": "ensureProfile()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L19",
+      "id": "useauth_ensureprofile",
+      "community": 0
+    },
+    {
+      "label": "applySession()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L40",
+      "id": "useauth_applysession",
+      "community": 0
+    },
+    {
+      "label": "useAuth()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L49",
+      "id": "useauth_useauth",
+      "community": 0
+    },
+    {
+      "label": "useEntries.test.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useEntries.test.ts",
+      "source_location": "L1",
+      "id": "src_composables_useentries_test_ts",
+      "community": 13
+    },
+    {
+      "label": "useEntries.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useEntries.ts",
+      "source_location": "L1",
+      "id": "src_composables_useentries_ts",
+      "community": 3
+    },
+    {
+      "label": "currentUserId()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useEntries.ts",
+      "source_location": "L18",
+      "id": "useentries_currentuserid",
+      "community": 3
+    },
+    {
+      "label": "useEntries()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useEntries.ts",
+      "source_location": "L23",
+      "id": "useentries_useentries",
+      "community": 3
+    },
+    {
+      "label": "supabase.ts",
+      "file_type": "code",
+      "source_file": "src\\lib\\supabase.ts",
+      "source_location": "L1",
+      "id": "src_lib_supabase_ts",
+      "community": 14
+    },
+    {
+      "label": "main.ts",
+      "file_type": "code",
+      "source_file": "src\\router\\main.ts",
+      "source_location": "L1",
+      "id": "src_router_main_ts",
+      "community": 15
+    },
+    {
+      "label": "Vue 3 + TypeScript + Vite Template",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_vue3_typescript_vite",
+      "community": 4
+    },
+    {
+      "label": "Vue 3 <script setup> SFCs",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "line 3",
+      "source_url": "https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_script_setup_sfc",
+      "community": 4
+    },
+    {
+      "label": "Vue Docs TypeScript Guide",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "line 5",
+      "source_url": "https://vuejs.org/guide/typescript/overview.html#project-setup",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_vue_typescript_guide",
+      "community": 4
+    },
+    {
+      "label": "Entries Page + Supabase Backend Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-23-entries-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-05-23",
+      "author": null,
+      "contributor": null,
+      "id": "plan_entries_page_supabase",
+      "community": 5
+    },
+    {
+      "label": "Entries Page + Supabase Backend Design Spec",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-23-entries-page-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-05-23",
+      "author": null,
+      "contributor": null,
+      "id": "spec_entries_page_design",
+      "community": 5
+    },
+    {
+      "label": "Supabase Setup Guide",
+      "file_type": "document",
+      "source_file": "supabase/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "supabase_readme_setup",
+      "community": 5
+    },
+    {
+      "label": "Default profile picture (pfp.png) \u2014 close-up meme-style photo of a white cat with tongue slightly out",
+      "file_type": "image",
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pfp_image",
+      "community": 1
+    },
+    {
+      "label": "White cat with dark eyes and protruding tongue (blep), grainy meme aesthetic",
+      "file_type": "image",
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pfp_subject_cat",
+      "community": 1
+    },
+    {
+      "label": "Default user avatar role in MidnightVue journaling app \u2014 playful, lighthearted placeholder identity",
+      "file_type": "image",
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pfp_role_default_avatar",
+      "community": 1
+    },
+    {
+      "label": "Mood: humorous, casual, internet-meme tone \u2014 softens the intimate journaling context",
+      "file_type": "image",
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pfp_mood_humor",
+      "community": 1
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAnchors.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_composables_useanchors_ts",
+      "_tgt": "useanchors_currentuserid",
+      "source": "src_composables_useanchors_ts",
+      "target": "useanchors_currentuserid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAnchors.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_composables_useanchors_ts",
+      "_tgt": "useanchors_useanchors",
+      "source": "src_composables_useanchors_ts",
+      "target": "useanchors_useanchors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_composables_useauth_ts",
+      "_tgt": "useauth_origin",
+      "source": "src_composables_useauth_ts",
+      "target": "useauth_origin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "src_composables_useauth_ts",
+      "_tgt": "useauth_generateusername",
+      "source": "src_composables_useauth_ts",
+      "target": "useauth_generateusername",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "src_composables_useauth_ts",
+      "_tgt": "useauth_ensureprofile",
+      "source": "src_composables_useauth_ts",
+      "target": "useauth_ensureprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "src_composables_useauth_ts",
+      "_tgt": "useauth_applysession",
+      "source": "src_composables_useauth_ts",
+      "target": "useauth_applysession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "src_composables_useauth_ts",
+      "_tgt": "useauth_useauth",
+      "source": "src_composables_useauth_ts",
+      "target": "useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "useauth_ensureprofile",
+      "_tgt": "useauth_generateusername",
+      "source": "useauth_generateusername",
+      "target": "useauth_ensureprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useAuth.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "useauth_applysession",
+      "_tgt": "useauth_ensureprofile",
+      "source": "useauth_ensureprofile",
+      "target": "useauth_applysession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useEntries.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "src_composables_useentries_ts",
+      "_tgt": "useentries_currentuserid",
+      "source": "src_composables_useentries_ts",
+      "target": "useentries_currentuserid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useEntries.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "src_composables_useentries_ts",
+      "_tgt": "useentries_useentries",
+      "source": "src_composables_useentries_ts",
+      "target": "useentries_useentries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 3",
+      "weight": 1.0,
+      "_src": "readme_vue3_typescript_vite",
+      "_tgt": "readme_script_setup_sfc",
+      "source": "readme_vue3_typescript_vite",
+      "target": "readme_script_setup_sfc"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 5",
+      "weight": 1.0,
+      "_src": "readme_vue3_typescript_vite",
+      "_tgt": "readme_vue_typescript_guide",
+      "source": "readme_vue3_typescript_vite",
+      "target": "readme_vue_typescript_guide"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/superpowers/specs/2026-05-23-entries-page-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_entries_page_design",
+      "_tgt": "plan_entries_page_supabase",
+      "source": "plan_entries_page_supabase",
+      "target": "spec_entries_page_design"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/superpowers/plans/2026-05-23-entries-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_entries_page_supabase",
+      "_tgt": "supabase_readme_setup",
+      "source": "plan_entries_page_supabase",
+      "target": "supabase_readme_setup"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "docs/superpowers/specs/2026-05-23-entries-page-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_entries_page_design",
+      "_tgt": "supabase_readme_setup",
+      "source": "spec_entries_page_design",
+      "target": "supabase_readme_setup"
+    },
+    {
+      "relation": "depicts",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "pfp_image",
+      "_tgt": "pfp_subject_cat",
+      "source": "pfp_image",
+      "target": "pfp_subject_cat"
+    },
+    {
+      "relation": "represents",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "pfp_image",
+      "_tgt": "pfp_role_default_avatar",
+      "source": "pfp_image",
+      "target": "pfp_role_default_avatar"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "pfp_subject_cat",
+      "_tgt": "pfp_mood_humor",
+      "source": "pfp_subject_cat",
+      "target": "pfp_mood_humor"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/pfp.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "pfp_role_default_avatar",
+      "_tgt": "pfp_mood_humor",
+      "source": "pfp_role_default_avatar",
+      "target": "pfp_mood_humor"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "entries_page_supabase_backend_initiative",
+      "label": "Entries Page + Supabase Backend Initiative",
+      "nodes": [
+        "plan_entries_page_supabase",
+        "spec_entries_page_design",
+        "supabase_readme_setup"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/superpowers/plans/2026-05-23-entries-page.md"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ import EntryTabsNav from '@/components/EntryTabsNav.vue'
 <style lang="scss" scoped>
 .entries {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 0 100px;
   color: $color-text;
 

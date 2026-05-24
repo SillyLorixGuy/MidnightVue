@@ -19,7 +19,7 @@
   font-family: $oxanium;
   font-size: 1.053rem; // ≈ 20px at 19px base
   font-weight: 500;
-  color: $color-iron-gray;
+  color: darken($color-text, 20%);
   text-decoration: none;
   opacity: 0.7;
   text-shadow: $glow-25-white;

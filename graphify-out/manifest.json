@@ -1,0 +1,20 @@
+{
+  "vite.config.ts": 1777847778.2707822,
+  "vitest.config.ts": 1779493664.3793027,
+  "src\\env.d.ts": 1779494013.2808414,
+  "src\\main.ts": 1777849675.3727236,
+  "src\\components\\EntryCard.test.ts": 1779552000.2032044,
+  "src\\composables\\useAnchors.test.ts": 1779551190.7489817,
+  "src\\composables\\useAnchors.ts": 1779551204.078836,
+  "src\\composables\\useAuth.test.ts": 1779645240.8250847,
+  "src\\composables\\useAuth.ts": 1779550590.9672477,
+  "src\\composables\\useEntries.test.ts": 1779551140.6481018,
+  "src\\composables\\useEntries.ts": 1779551155.6085064,
+  "src\\lib\\supabase.ts": 1779532059.4797378,
+  "src\\router\\main.ts": 1779645265.6448166,
+  "README.md": 1777155788.5240767,
+  "docs\\superpowers\\plans\\2026-05-23-entries-page.md": 1779493041.6308672,
+  "docs\\superpowers\\specs\\2026-05-23-entries-page-design.md": 1779492461.5355911,
+  "supabase\\README.md": 1779533375.2737823,
+  "public\\pfp.png": 1735400111.86471
+}

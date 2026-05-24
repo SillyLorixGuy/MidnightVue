@@ -65,5 +65,5 @@ async function oauth(provider: 'google' | 'github' | 'discord') {
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/auth-form' as *;
+@use '@/assets/scss/_auth-form' as *;
 </style>
