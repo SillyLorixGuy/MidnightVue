@@ -14,7 +14,8 @@ dist-ssr
 .env
 .docs
 .claude
-
+.graphify-out
+*.test.*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
