@@ -3,15 +3,15 @@
         <section class="date-section">
             <div>
                 <p>DAY</p>
-                <p>{{ getCurrentDay() }}</p>
+                <p>{{ today.day }}</p>
             </div>
             <div>
                 <p>MONTH</p>
-                <p>{{ getCurrentMonth() }} </p>
+                <p>{{ today.month }} </p>
             </div>
             <div>
                 <p>YEAR</p>
-                <p>{{ getCurrentYear() }}</p>
+                <p>{{ today.year }}</p>
             </div>
         </section>
 
@@ -331,7 +331,7 @@ section {
 </style>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useEntries } from '@/composables/useEntries';
 
 const { createEntry } = useEntries();
@@ -342,6 +342,15 @@ const title = ref<string>('');
 const content = ref<string>('');
 const submitting = ref(false);
 const submitError = ref<string | null>(null);
+
+const today = computed(() => {
+  const d = new Date()
+  return {
+    day: String(d.getDate()).padStart(2, '0'),
+    month: String(d.getMonth() + 1).padStart(2, '0'),
+    year: String(d.getFullYear()),
+  }
+})
 
 async function onSubmit() {
     submitting.value = true;
@@ -367,18 +376,6 @@ function handleMoodDblClick(value: number) {
     if (value === selectedMood.value) {
         selectedMood.value = 0;
     }
-}
-
-function getCurrentDay() {
-    return "10";
-}
-
-function getCurrentMonth() {
-    return "02";
-}
-
-function getCurrentYear() {
-    return "2026";
 }
 
 function getMood() {
