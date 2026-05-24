@@ -44,7 +44,11 @@
                     </div>
                     <h3>{{ getMood() || "00"}}</h3>
                 </div>
-                <p v-if="submitError" class="submit-error">{{ submitError }}</p>
+                <p
+                    v-if="submitStatus"
+                    class="submit-status"
+                    :class="`submit-status--${submitStatus.kind}`"
+                >{{ submitStatus.text }}</p>
                 <button id="submit-btn" type="button" @click="onSubmit" :disabled="submitting">SUBMIT</button>
             </div>
         </form>
@@ -319,11 +323,20 @@ section {
                 }
             }
 
-            & .submit-error {
-                color: #ff8080;
+            & .submit-status {
                 font-family: $ibmpm;
                 font-size: $fs-small;
                 margin-top: 0.5rem;
+
+                &--error {
+                    color: #ff8080;
+                }
+
+                &--success,
+                &--info {
+                    color: $color-text;
+                    text-shadow: $glow-50-white;
+                }
             }
         }
     }
@@ -341,7 +354,8 @@ const hoveredMood = ref<number>(0);
 const title = ref<string>('');
 const content = ref<string>('');
 const submitting = ref(false);
-const submitError = ref<string | null>(null);
+type SubmitStatus = { kind: 'error' | 'success' | 'info'; text: string } | null
+const submitStatus = ref<SubmitStatus>(null);
 
 const today = computed(() => {
   const d = new Date()
@@ -354,14 +368,14 @@ const today = computed(() => {
 
 async function onSubmit() {
     submitting.value = true;
-    submitError.value = null;
+    submitStatus.value = null;
     const { error } = await createEntry({
         title: title.value,
         content: content.value,
         mood: selectedMood.value > 0 ? selectedMood.value : null,
     });
     submitting.value = false;
-    if (error) { submitError.value = error.message; return; }
+    if (error) { submitStatus.value = { kind: 'error', text: error.message }; return; }
     // Reset form
     title.value = '';
     content.value = '';
