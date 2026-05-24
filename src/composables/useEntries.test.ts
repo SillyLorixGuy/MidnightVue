@@ -52,4 +52,24 @@ describe('useEntries', () => {
     })
     expect(data?.id).toBe('e2')
   })
+
+  it('countMyEntries returns the head-count for the current user', async () => {
+    const eq = vi.fn().mockResolvedValue({ count: 7, error: null })
+    const select = vi.fn().mockReturnValue({ eq })
+    ;(supabase.from as any).mockReturnValue({ select })
+
+    const { countMyEntries } = useEntries()
+    const n = await countMyEntries()
+
+    expect(supabase.from).toHaveBeenCalledWith('entries')
+    expect(select).toHaveBeenCalledWith('id', { count: 'exact', head: true })
+    expect(eq).toHaveBeenCalledWith('user_id', 'u1')
+    expect(n).toBe(7)
+  })
+
+  it('countMyEntries returns 0 when not authenticated', async () => {
+    ;(supabase.auth.getUser as any).mockResolvedValueOnce({ data: { user: null } })
+    const { countMyEntries } = useEntries()
+    expect(await countMyEntries()).toBe(0)
+  })
 })

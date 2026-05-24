@@ -50,5 +50,15 @@ export function useEntries() {
     return { data: (row ?? null) as EntryWithAuthor | null, error: null }
   }
 
-  return { createEntry, listMyEntries, getByShareCode }
+  async function countMyEntries(): Promise<number> {
+    const uid = await currentUserId()
+    if (!uid) return 0
+    const { count } = await supabase
+      .from('entries')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', uid)
+    return count ?? 0
+  }
+
+  return { createEntry, listMyEntries, getByShareCode, countMyEntries }
 }
