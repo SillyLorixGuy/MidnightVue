@@ -15,7 +15,6 @@ dist-ssr
 docs
 .claude
 graphify-out
-*.test.ts
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
