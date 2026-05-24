@@ -12,9 +12,9 @@ dist
 dist-ssr
 *.local
 .env
-.docs
+docs
 .claude
-.graphify-out
+graphify-out
 *.test.*
 # Editor directories and files
 .vscode/*
