@@ -344,10 +344,16 @@ section {
 </style>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useEntries } from '@/composables/useEntries';
+import * as pendingEntries from '@/lib/pendingEntries';
 
-const { createEntry } = useEntries();
+const { createEntry, countMyEntries } = useEntries();
+
+const dbCount = ref(0);
+onMounted(async () => {
+  dbCount.value = await countMyEntries();
+});
 
 const selectedMood = ref<number>(0);
 const hoveredMood = ref<number>(0);
@@ -356,6 +362,13 @@ const content = ref<string>('');
 const submitting = ref(false);
 type SubmitStatus = { kind: 'error' | 'success' | 'info'; text: string } | null
 const submitStatus = ref<SubmitStatus>(null);
+
+let statusTimer: ReturnType<typeof setTimeout> | null = null;
+function flashStatus(status: NonNullable<SubmitStatus>, ms = 2000) {
+  submitStatus.value = status;
+  if (statusTimer) clearTimeout(statusTimer);
+  statusTimer = setTimeout(() => { submitStatus.value = null; }, ms);
+}
 
 const today = computed(() => {
   const d = new Date()
@@ -367,19 +380,51 @@ const today = computed(() => {
 })
 
 async function onSubmit() {
+    const trimmedContent = content.value.trim();
+    if (!trimmedContent) {
+        submitStatus.value = { kind: 'error', text: 'Write something first.' };
+        return;
+    }
+
     submitting.value = true;
     submitStatus.value = null;
-    const { error } = await createEntry({
-        title: title.value,
-        content: content.value,
-        mood: selectedMood.value > 0 ? selectedMood.value : null,
+
+    const pendingCount = pendingEntries.count();
+    const resolvedTitle = title.value.trim() || `ENTRY #${dbCount.value + pendingCount + 1}`;
+    const moodValue = selectedMood.value > 0 ? selectedMood.value : null;
+
+    const draftId = crypto.randomUUID();
+    pendingEntries.add({
+        id: draftId,
+        title: resolvedTitle,
+        content: trimmedContent,
+        mood: moodValue,
+        drafted_at_iso: new Date().toISOString(),
     });
+
+    const { error } = await createEntry({
+        title: resolvedTitle,
+        content: trimmedContent,
+        mood: moodValue,
+    });
+
     submitting.value = false;
-    if (error) { submitStatus.value = { kind: 'error', text: error.message }; return; }
-    // Reset form
+
+    if (error) {
+        // Leave draft in pending queue; reset form so user can keep writing.
+        title.value = '';
+        content.value = '';
+        selectedMood.value = 0;
+        flashStatus({ kind: 'info', text: 'Saved locally — will sync when you sign in.' });
+        return;
+    }
+
+    pendingEntries.remove(draftId);
     title.value = '';
     content.value = '';
     selectedMood.value = 0;
+    dbCount.value += 1;
+    flashStatus({ kind: 'success', text: 'Saved' });
 }
 
 function handleMoodClick(value: number) {
