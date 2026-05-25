@@ -344,7 +344,7 @@ section {
 </style>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useEntries } from '@/composables/useEntries';
 import * as pendingEntries from '@/lib/pendingEntries';
 
@@ -369,6 +369,7 @@ function flashStatus(status: NonNullable<SubmitStatus>, ms = 2000) {
   if (statusTimer) clearTimeout(statusTimer);
   statusTimer = setTimeout(() => { submitStatus.value = null; }, ms);
 }
+onUnmounted(() => { if (statusTimer) clearTimeout(statusTimer); });
 
 const today = computed(() => {
   const d = new Date()
