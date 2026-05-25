@@ -395,7 +395,7 @@ async function onSubmit() {
     const moodValue = selectedMood.value > 0 ? selectedMood.value : null;
 
     const draftId = crypto.randomUUID();
-    pendingEntries.add({
+    const savedLocally = pendingEntries.add({
         id: draftId,
         title: resolvedTitle,
         content: trimmedContent,
@@ -412,11 +412,14 @@ async function onSubmit() {
     submitting.value = false;
 
     if (error) {
-        // Leave draft in pending queue; reset form so user can keep writing.
         title.value = '';
         content.value = '';
         selectedMood.value = 0;
-        flashStatus({ kind: 'info', text: 'Saved locally — will sync when you sign in.' });
+        if (savedLocally) {
+            flashStatus({ kind: 'info', text: 'Saved locally — will sync when you sign in.' });
+        } else {
+            submitStatus.value = { kind: 'error', text: error.message };
+        }
         return;
     }
 

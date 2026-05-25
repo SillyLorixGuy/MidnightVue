@@ -19,22 +19,23 @@ export function read(): PendingEntry[] {
   }
 }
 
-export function write(queue: PendingEntry[]): void {
+export function write(queue: PendingEntry[]): boolean {
   try {
     localStorage.setItem(KEY, JSON.stringify(queue))
+    return true
   } catch {
-    // quota exceeded / storage disabled — drop silently; DB path is the source of truth
+    return false
   }
 }
 
-export function add(entry: PendingEntry): void {
+export function add(entry: PendingEntry): boolean {
   const next = read()
   next.push(entry)
-  write(next)
+  return write(next)
 }
 
-export function remove(id: string): void {
-  write(read().filter((e) => e.id !== id))
+export function remove(id: string): boolean {
+  return write(read().filter((e) => e.id !== id))
 }
 
 export function count(): number {
