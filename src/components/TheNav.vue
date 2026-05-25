@@ -9,7 +9,7 @@
             </ul>
         </nav>
         <section>
-            <p>{{ getDate() }}</p>
+            <p>{{ today }}</p>
             <div class="profile-dropdown" @blur="open = false" tabindex="0">
                 <button class="profile-button" @click="open = !open" aria-haspopup="true" :aria-expanded="open">
                     <img :src="getPfp()" alt="">
@@ -266,7 +266,7 @@
 </style>
 
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
     import { useRouter } from 'vue-router'
     import { useAuth } from '@/composables/useAuth'
 
@@ -280,9 +280,14 @@
         router.push('/login')
     }
 
-    function getDate() {
-        return "MON 10.02.2026";
-    }
+    const today = computed(() => {
+        const d = new Date()
+        const weekday = d.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()
+        const day = String(d.getDate()).padStart(2, '0')
+        const month = String(d.getMonth() + 1).padStart(2, '0')
+        const year = String(d.getFullYear())
+        return `${weekday} ${day}.${month}.${year}`
+    })
 
     function getPfp() {
         return './pfp.png';
