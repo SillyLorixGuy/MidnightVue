@@ -81,4 +81,82 @@ describe('useProfile', () => {
 
     expect(error?.code).toBe('23505')
   })
+
+  it('uploadAvatar rejects unsupported mime types', async () => {
+    const file = new File([new Uint8Array(10)], 'a.gif', { type: 'image/gif' })
+    const { useProfile } = await import('./useProfile')
+    const { url, error } = await useProfile().uploadAvatar(file)
+    expect(url).toBeNull()
+    expect(error?.message).toMatch(/type/i)
+  })
+
+  it('uploadAvatar rejects files larger than 2 MB', async () => {
+    const buf = new Uint8Array(2 * 1024 * 1024 + 1)
+    const file = new File([buf], 'big.png', { type: 'image/png' })
+    const { useProfile } = await import('./useProfile')
+    const { url, error } = await useProfile().uploadAvatar(file)
+    expect(url).toBeNull()
+    expect(error?.message).toMatch(/size/i)
+  })
+
+  it('uploadAvatar uploads to avatars/<uid>/<ts>.<ext> and returns public URL', async () => {
+    const upload = vi.fn().mockResolvedValue({ error: null })
+    const list = vi.fn().mockResolvedValue({ data: [], error: null })
+    const remove = vi.fn().mockResolvedValue({ error: null })
+    const getPublicUrl = vi.fn().mockReturnValue({
+      data: { publicUrl: 'https://x/avatars/u1/1234.png' },
+    })
+    ;(supabase.storage.from as any).mockReturnValue({ upload, list, remove, getPublicUrl })
+
+    const file = new File([new Uint8Array(10)], 'a.png', { type: 'image/png' })
+    const { useProfile } = await import('./useProfile')
+    const { url, error } = await useProfile().uploadAvatar(file)
+
+    expect(error).toBeNull()
+    expect(url).toBe('https://x/avatars/u1/1234.png')
+    const [path, body] = upload.mock.calls[0]
+    expect(path).toMatch(/^u1\/\d+\.png$/)
+    expect(body).toBe(file)
+  })
+
+  it('uploadAvatar prunes when folder length exceeds 3', async () => {
+    const upload = vi.fn().mockResolvedValue({ error: null })
+    const list = vi.fn().mockResolvedValue({
+      data: [
+        { name: '1000.png' },
+        { name: '2000.png' },
+        { name: '3000.png' },
+        { name: '4000.png' },
+      ],
+      error: null,
+    })
+    const remove = vi.fn().mockResolvedValue({ error: null })
+    const getPublicUrl = vi.fn().mockReturnValue({ data: { publicUrl: 'u' } })
+    ;(supabase.storage.from as any).mockReturnValue({ upload, list, remove, getPublicUrl })
+
+    const file = new File([new Uint8Array(10)], 'a.png', { type: 'image/png' })
+    const { useProfile } = await import('./useProfile')
+    await useProfile().uploadAvatar(file)
+
+    expect(remove).toHaveBeenCalledWith(['u1/1000.png'])
+  })
+
+  it('listAvatarHistory returns parsed entries sorted desc', async () => {
+    const list = vi.fn().mockResolvedValue({
+      data: [{ name: '3000.png' }, { name: '1000.png' }, { name: '2000.png' }],
+      error: null,
+    })
+    const getPublicUrl = vi.fn((path: string) => ({
+      data: { publicUrl: `https://x/${path}` },
+    }))
+    ;(supabase.storage.from as any).mockReturnValue({ list, getPublicUrl })
+
+    const { useProfile } = await import('./useProfile')
+    const { data, error } = await useProfile().listAvatarHistory()
+
+    expect(error).toBeNull()
+    expect(data?.map((d) => d.uploaded_at)).toEqual([3000, 2000, 1000])
+    expect(data?.[0].path).toBe('u1/3000.png')
+    expect(data?.[0].url).toBe('https://x/u1/3000.png')
+  })
 })
