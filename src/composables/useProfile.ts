@@ -76,6 +76,7 @@ export function useProfile() {
     const { data: listed, error: listErr } = await bucket.list(uid, {
       sortBy: { column: 'name', order: 'asc' },
     })
+    // Prune is fail-open: upload already succeeded, so we return success even if cleanup fails. Leaked files are pruned on the next upload.
     if (!listErr && listed && listed.length > MAX_HISTORY) {
       const toDrop = listed
         .slice(0, listed.length - MAX_HISTORY)
