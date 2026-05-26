@@ -31,8 +31,17 @@
         <span class="entry-card__username">{{ entry.author.username }}</span>
       </div>
 
-      <!-- Center: title -->
-      <h2 class="entry-card__title">{{ entry.title }}</h2>
+      <!-- Center: title (toggles open/close) -->
+      <button
+        type="button"
+        class="entry-card__title-btn"
+        :aria-expanded="open"
+        :aria-controls="`entry-content-${entry.id}`"
+        :aria-label="open ? 'Collapse entry' : 'Expand entry'"
+        @click="open = !open"
+      >
+        <h2 class="entry-card__title">{{ entry.title }}</h2>
+      </button>
 
       <!-- Right: date + time -->
       <div class="entry-card__meta">
@@ -41,13 +50,20 @@
       </div>
     </div>
 
-    <!-- Body -->
-    <div class="entry-card__body">
-      <p class="entry-card__content">{{ entry.content }}</p>
-    </div>
+    <!-- Collapsible: body + footer -->
+    <div
+      class="entry-card__collapsible"
+      :class="{ 'is-open': open }"
+      :id="`entry-content-${entry.id}`"
+    >
+      <div class="entry-card__collapsible-inner">
+        <!-- Body -->
+        <div class="entry-card__body">
+          <p class="entry-card__content">{{ entry.content }}</p>
+        </div>
 
-    <!-- Footer -->
-    <footer class="entry-card__footer">
+        <!-- Footer -->
+        <footer class="entry-card__footer">
       <!-- Left: reveal toggle -->
       <button
         class="entry-card__icon-btn"
@@ -124,7 +140,9 @@
           <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
         </svg>
       </button>
-    </footer>
+        </footer>
+      </div>
+    </div>
   </article>
 </template>
 
@@ -148,6 +166,7 @@ defineEmits<{
 }>()
 
 const revealed = ref(false)
+const open = ref(true)
 
 const formattedDate = computed(() => {
   const d = new Date(props.entry.created_at)
@@ -231,17 +250,74 @@ const formattedTime = computed(() => {
     text-overflow: ellipsis;
   }
 
-  // ── Title (center) ──────────────────────────────────────────────────────
-  &__title {
+  // ── Title button (center) ───────────────────────────────────────────────
+  &__title-btn {
     flex: 1 1 auto;
+    min-width: 0;
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    margin: 0;
+    cursor: pointer;
+    color: inherit;
+    border-radius: 4px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus-visible {
+      outline: 1px solid rgba(255, 255, 255, 0.45);
+      outline-offset: 2px;
+    }
+
+    &:hover .entry-card__title {
+      text-shadow: 0 0 6px white, 0 0 12px rgba(255, 255, 255, 0.45);
+    }
+
+    &:active .entry-card__title {
+      text-shadow: 0 0 4px white;
+    }
+  }
+
+  &__title {
+    margin: 0;
     font-family: $oxanium;
     font-weight: 500;
     font-size: 24px;
     color: $color-text;
     text-shadow: 0 0 3.5px white;
     text-align: center;
-    min-width: 0;
     word-break: break-word;
+    transition: text-shadow 180ms ease;
+  }
+
+  // ── Collapsible body+footer ─────────────────────────────────────────────
+  &__collapsible {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 320ms cubic-bezier(0.32, 0.72, 0, 1);
+
+    &.is-open {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__collapsible-inner {
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity 200ms ease 60ms,
+      transform 240ms ease 40ms;
+  }
+
+  &__collapsible.is-open &__collapsible-inner {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   // ── Meta (right group) ──────────────────────────────────────────────────
@@ -373,9 +449,12 @@ const formattedTime = computed(() => {
       flex: 1 1 auto;
     }
 
-    &__title {
+    &__title-btn {
       order: 3;
       flex: 0 0 100%;
+    }
+
+    &__title {
       font-size: 20px;
     }
 
