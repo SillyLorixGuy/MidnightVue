@@ -40,12 +40,24 @@ function entry(id: string) {
   }
 }
 
+const mockProfile = {
+  username: 'lorix',
+  bio: null,
+  avatar_url: null,
+  created_at: '2026-03-10T00:00:00Z',
+  last_sign_in_at: '2026-04-07T00:00:00Z',
+  total_entries: 0,
+}
+
 describe('ProfileEntriesList', () => {
   beforeEach(() => mockList.mockReset())
 
   it('shows skeletons on initial load and renders entries on resolve', async () => {
     mockList.mockResolvedValueOnce({ data: [entry('e1'), entry('e2')], error: null })
-    const w = mount(ProfileEntriesList, { global: { stubs: { EntryCard: true } } })
+    const w = mount(ProfileEntriesList, {
+      props: { profile: mockProfile },
+      global: { stubs: { EntryCard: true } },
+    })
     expect(w.findAll('[data-testid="profile-entry-skeleton"]').length).toBeGreaterThan(0)
     await flushPromises()
     expect(w.findAllComponents({ name: 'EntryCard' }).length).toBe(2)
@@ -53,7 +65,10 @@ describe('ProfileEntriesList', () => {
 
   it('fetches next page with correct offset when sentinel intersects', async () => {
     mockList.mockResolvedValueOnce({ data: Array.from({ length: 5 }, (_, i) => entry(`e${i}`)), error: null })
-    const w = mount(ProfileEntriesList, { global: { stubs: { EntryCard: true } } })
+    mount(ProfileEntriesList, {
+      props: { profile: mockProfile },
+      global: { stubs: { EntryCard: true } },
+    })
     await flushPromises()
 
     mockList.mockResolvedValueOnce({ data: [entry('e6')], error: null })
@@ -65,7 +80,10 @@ describe('ProfileEntriesList', () => {
 
   it('stops fetching once a page returns fewer than 5 items (done state)', async () => {
     mockList.mockResolvedValueOnce({ data: [entry('e1'), entry('e2')], error: null })
-    const w = mount(ProfileEntriesList, { global: { stubs: { EntryCard: true } } })
+    mount(ProfileEntriesList, {
+      props: { profile: mockProfile },
+      global: { stubs: { EntryCard: true } },
+    })
     await flushPromises()
 
     lastObserver!.trigger()
@@ -78,14 +96,20 @@ describe('ProfileEntriesList', () => {
 
   it('renders empty state when first page returns zero items', async () => {
     mockList.mockResolvedValueOnce({ data: [], error: null })
-    const w = mount(ProfileEntriesList, { global: { stubs: { EntryCard: true } } })
+    const w = mount(ProfileEntriesList, {
+      props: { profile: mockProfile },
+      global: { stubs: { EntryCard: true } },
+    })
     await flushPromises()
     expect(w.text()).toMatch(/no entries yet/i)
   })
 
   it('renders retry button on error', async () => {
     mockList.mockResolvedValueOnce({ data: null, error: new Error('boom') })
-    const w = mount(ProfileEntriesList, { global: { stubs: { EntryCard: true } } })
+    const w = mount(ProfileEntriesList, {
+      props: { profile: mockProfile },
+      global: { stubs: { EntryCard: true } },
+    })
     await flushPromises()
     expect(w.find('[data-testid="profile-entries-retry"]').exists()).toBe(true)
   })

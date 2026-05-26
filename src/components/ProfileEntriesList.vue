@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useEntries, type EntryRow } from '@/composables/useEntries'
+import type { ProfileData } from '@/composables/useProfile'
 import EntryCard from './EntryCard.vue'
+
+const props = defineProps<{ profile: ProfileData }>()
 
 const PAGE_SIZE = 5
 
@@ -11,6 +14,20 @@ const fetching = ref(false)
 const done = ref(false)
 const error = ref<string | null>(null)
 const sentinel = ref<HTMLElement | null>(null)
+
+const entriesForCard = computed(() =>
+  entries.value.map((e) => ({
+    id: e.id,
+    title: e.title,
+    content: e.content,
+    created_at: e.created_at,
+    share_code: e.share_code,
+    author: {
+      username: props.profile.username,
+      avatar_url: props.profile.avatar_url,
+    },
+  }))
+)
 
 let observer: IntersectionObserver | null = null
 const { listMyEntries } = useEntries()
@@ -63,7 +80,7 @@ onBeforeUnmount(() => observer?.disconnect())
     </div>
 
     <template v-else>
-      <EntryCard v-for="e in entries" :key="e.id" :entry="e" />
+      <EntryCard v-for="e in entriesForCard" :key="e.id" :entry="e" :is-anchored="false" />
 
       <template v-if="loading">
         <div
