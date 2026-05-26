@@ -48,9 +48,9 @@ const hasBio    = computed(() => !!props.profile.bio && props.profile.bio.trim()
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.25rem 1.5rem;
-  border: 1px solid var(--color-border, #2a2a2a);
+  border: 1px solid $color-iron-gray;
   border-radius: 8px;
-  background: var(--color-card, #1a1a1a);
+  background: $color-shadow-gray-2;
 
   &__identity { display: flex; flex-direction: column; gap: 0.5rem; }
 
@@ -59,18 +59,18 @@ const hasBio    = computed(() => !!props.profile.bio && props.profile.bio.trim()
     height: 200px;
     border-radius: 5px;
     object-fit: cover;
-    background: #111;
+    background: $color-onyx;
   }
 
   &__name {
-    color: var(--color-accent, #4fd1c5);
+    color: $color-text;
     font-family: monospace;
     font-size: 1.1rem;
   }
 
   &__bio {
     margin: 0;
-    color: var(--color-text-muted, #c0c0c0);
+    color: lighten($color-iron-gray, 20%);
     font-size: 0.95rem;
   }
 
@@ -79,7 +79,7 @@ const hasBio    = computed(() => !!props.profile.bio && props.profile.bio.trim()
     padding: 0;
     list-style: none;
     text-align: right;
-    color: var(--color-text-muted, #c0c0c0);
+    color: lighten($color-iron-gray, 20%);
     font-size: 0.9rem;
 
     li + li { margin-top: 0.25rem; }
