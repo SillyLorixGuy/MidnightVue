@@ -30,7 +30,8 @@ main {
   max-width: 1280px;
   background-color: $color-shadow-gray;
   justify-self: center;
-  min-height: 90vh;
+  min-height: 650px;
+  height: 90vh;
   box-shadow: $glow-25-gray;
 
   @media (max-width: $bp-lg) {

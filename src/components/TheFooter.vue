@@ -32,7 +32,7 @@
         background-color: $color-carbon-black;
         min-height: 200px;
         width: 100%;
-        padding: 2.5rem 0 0;
+        padding: 1.5rem 0 0;
 
         @media (max-width: $bp-md) {
             padding: 2rem 0 0;
