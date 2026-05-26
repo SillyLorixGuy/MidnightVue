@@ -23,7 +23,7 @@ as $$
     p.bio,
     p.avatar_url,
     p.created_at,
-    u.last_sign_in_at,
+    coalesce(u.last_sign_in_at, p.created_at) as last_sign_in_at,
     (select count(*)::int from public.entries e where e.user_id = p.id) as total_entries
   from public.profiles p
   join auth.users u on u.id = p.id
