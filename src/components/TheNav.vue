@@ -17,6 +17,9 @@
                 <ul v-if="open" class="profile-menu" role="menu">
                     <template v-if="isAuthenticated">
                         <li class="profile-menu__user">{{ user?.email ?? 'Signed in' }}</li>
+                        <li><RouterLink to="/profile" @click="open = false">View profile</RouterLink></li>
+                        <li><RouterLink to="/profile/edit" @click="open = false">Edit profile</RouterLink></li>
+                        <li><span class="profile-menu__disabled" aria-disabled="true" title="Coming soon">Settings</span></li>
                         <li><button @click="doSignOut">Sign out</button></li>
                     </template>
                     <template v-else>
@@ -206,6 +209,14 @@
                             content: " ]";
                             opacity: 0.55;
                         }
+                    }
+
+                    &__disabled {
+                        display: block;
+                        padding: inherit;
+                        opacity: 0.5;
+                        cursor: not-allowed;
+                        pointer-events: none;
                     }
 
                     & button,
