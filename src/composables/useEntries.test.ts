@@ -72,4 +72,29 @@ describe('useEntries', () => {
     const { countMyEntries } = useEntries()
     expect(await countMyEntries()).toBe(0)
   })
+
+  it('listMyEntries applies limit and offset when provided', async () => {
+    const range = vi.fn().mockResolvedValue({ data: [], error: null })
+    const order = vi.fn().mockReturnValue({ range })
+    const eq = vi.fn().mockReturnValue({ order })
+    const select = vi.fn().mockReturnValue({ eq })
+    ;(supabase.from as any).mockReturnValue({ select })
+
+    const { useEntries } = await import('./useEntries')
+    await useEntries().listMyEntries({ limit: 5, offset: 10 })
+
+    expect(range).toHaveBeenCalledWith(10, 14) // offset .. offset+limit-1 inclusive
+  })
+
+  it('listMyEntries defaults preserve prior behavior', async () => {
+    const order = vi.fn().mockResolvedValue({ data: [], error: null })
+    const eq = vi.fn().mockReturnValue({ order })
+    const select = vi.fn().mockReturnValue({ eq })
+    ;(supabase.from as any).mockReturnValue({ select })
+
+    const { useEntries } = await import('./useEntries')
+    await useEntries().listMyEntries()
+
+    expect(order).toHaveBeenCalled()
+  })
 })
