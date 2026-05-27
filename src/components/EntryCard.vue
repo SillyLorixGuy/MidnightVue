@@ -219,7 +219,6 @@ const formattedTime = computed(() => {
     height: 40px;
     border-radius: 24px;
     background: $color-iron-gray;
-    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;

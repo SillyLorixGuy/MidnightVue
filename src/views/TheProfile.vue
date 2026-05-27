@@ -26,7 +26,7 @@ onMounted(load)
 </script>
 
 <template>
-  <main class="the-profile">
+  <section class="the-profile">
     <div v-if="loading" class="the-profile__skeleton" data-testid="profile-skeleton">
       <div class="the-profile__skeleton-avatar"></div>
       <div class="the-profile__skeleton-lines">
@@ -45,12 +45,12 @@ onMounted(load)
       <ProfileHeader :profile="profile" />
       <ProfileEntriesList :profile="profile" />
     </template>
-  </main>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 .the-profile {
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 1.5rem 1rem;
   display: flex;
