@@ -212,15 +212,21 @@
                     }
 
                     &__disabled {
-                        display: block;
-                        padding: inherit;
-                        opacity: 0.5;
+                        opacity: 0.4;
                         cursor: not-allowed;
                         pointer-events: none;
+
+                        &::before { color: $color-iron-gray; }
+                        &:hover, &:focus-visible {
+                            opacity: 0.4;
+                            text-shadow: none;
+                            &::before { color: $color-iron-gray; transform: none; }
+                        }
                     }
 
                     & button,
-                    & a {
+                    & a,
+                    & .profile-menu__disabled {
                         display: flex;
                         align-items: center;
                         gap: 0.5rem;
