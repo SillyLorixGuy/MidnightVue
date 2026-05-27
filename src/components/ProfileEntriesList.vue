@@ -120,9 +120,11 @@ onBeforeUnmount(() => observer?.disconnect())
   }
   &__title {
     margin: 0;
-    font-size: 0.95rem;
-    color: lighten($color-iron-gray, 20%);
+    font-family: $oxanium;
+    font-size: $fs-p;
+    color: $color-text;
     font-weight: 400;
+    letter-spacing: 0.04em;
   }
 
   &__skeleton {
@@ -135,13 +137,15 @@ onBeforeUnmount(() => observer?.disconnect())
 
   &__empty {
     text-align: center;
-    color: lighten($color-iron-gray, 20%);
+    color: $color-text;
+    font-family: $ibmpm;
   }
 
   &__error {
     text-align: center;
     padding: 1rem;
-    color: lighten($color-iron-gray, 20%);
+    color: $color-text;
+    font-family: $ibmpm;
   }
 
   &__sentinel { height: 1px; }

@@ -64,14 +64,16 @@ const hasBio    = computed(() => !!props.profile.bio && props.profile.bio.trim()
 
   &__name {
     color: $color-text;
-    font-family: monospace;
-    font-size: 1.1rem;
+    font-family: $oxanium;
+    font-size: $fs-h2;
   }
 
   &__bio {
     margin: 0;
-    color: lighten($color-iron-gray, 20%);
-    font-size: 0.95rem;
+    color: $color-text;
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    opacity: 0.85;
   }
 
   &__stats {
@@ -79,8 +81,9 @@ const hasBio    = computed(() => !!props.profile.bio && props.profile.bio.trim()
     padding: 0;
     list-style: none;
     text-align: right;
-    color: lighten($color-iron-gray, 20%);
-    font-size: 0.9rem;
+    color: $color-text;
+    font-family: $ibmpm;
+    font-size: $fs-small;
 
     li + li { margin-top: 0.25rem; }
   }
