@@ -18,6 +18,16 @@ const routes: RouteRecordRaw[] = [
       { path: 'anchored', component: () => import('@/views/AnchoredEntries.vue') },
     ],
   },
+  {
+    path: '/profile',
+    component: () => import('@/views/TheProfile.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/profile/edit',
+    component: () => import('@/views/TheProfileEdit.vue'),
+    meta: { requiresAuth: true },
+  },
   { path: '/login', component: () => import('@/views/AuthLogin.vue') },
   { path: '/signup', component: () => import('@/views/AuthSignup.vue') },
   { path: '/forgot-password', component: () => import('@/views/AuthForgotPassword.vue') },

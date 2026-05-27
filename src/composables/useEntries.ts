@@ -32,15 +32,19 @@ export function useEntries() {
     return { data: data as EntryRow | null, error }
   }
 
-  async function listMyEntries() {
+  async function listMyEntries(opts?: { limit: number; offset: number }) {
     const uid = await currentUserId()
     if (!uid) return { data: null, error: new Error('Not authenticated') }
-    const { data, error } = await supabase
+    const base = supabase
       .from('entries')
       .select('*')
       .eq('user_id', uid)
       .order('created_at', { ascending: false })
-    return { data: (data ?? []) as EntryRow[], error }
+    const query = opts
+      ? base.range(opts.offset, opts.offset + opts.limit - 1)
+      : base
+    const { data, error } = await query
+    return { data: data as EntryRow[] | null, error }
   }
 
   async function getByShareCode(code: string) {
