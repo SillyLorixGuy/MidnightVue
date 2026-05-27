@@ -95,150 +95,360 @@ onMounted(load)
 </script>
 
 <template>
-  <main class="profile-edit">
-    <div v-if="loading">Loading…</div>
-    <div v-else-if="loadError">{{ loadError }}</div>
+  <section class="profile-edit">
+    <div v-if="loading" class="profile-edit__pending">~/loading…</div>
+    <div v-else-if="loadError" class="profile-edit__pending">! {{ loadError }}</div>
 
     <form v-else class="profile-edit__form" @submit.prevent="onSave">
-      <label class="profile-edit__field">
-        <span>Username</span>
-        <input
-          v-model.trim="username"
-          data-testid="profile-edit-username"
-          :disabled="submitting"
-          autocomplete="off"
-        />
-        <small v-if="!usernameValid" class="profile-edit__hint">
-          Use a–z, 0–9, _, 3–20 chars.
-        </small>
-        <small
-          v-if="usernameTaken"
-          data-testid="profile-edit-username-error"
-          class="profile-edit__error"
-        >That username is taken.</small>
-      </label>
+      <header class="profile-edit__head">
+        <h1 class="profile-edit__title">edit profile</h1>
+      </header>
 
-      <label class="profile-edit__field">
-        <span>Bio</span>
-        <textarea
-          v-model="bio"
-          data-testid="profile-edit-bio"
-          :disabled="submitting"
-          rows="4"
-        ></textarea>
-        <small
-          class="profile-edit__counter"
-          :class="{ 'profile-edit__counter--over': !bioValid }"
-        >{{ bio.length }} / {{ BIO_MAX }}</small>
-      </label>
+      <section class="profile-edit__group">
+        <label class="profile-edit__field">
+          <span class="profile-edit__label">› username</span>
+          <input
+            v-model.trim="username"
+            data-testid="profile-edit-username"
+            :disabled="submitting"
+            autocomplete="off"
+            class="profile-edit__input"
+          />
+          <small
+            v-if="usernameTaken"
+            data-testid="profile-edit-username-error"
+            class="profile-edit__error"
+          >[ that username is taken ]</small>
+        </label>
 
-      <div class="profile-edit__avatar">
-        <span class="profile-edit__field-label">Avatar</span>
-        <img
-          v-if="pendingAvatarUrl"
-          :src="pendingAvatarUrl"
-          alt="current avatar"
-          class="profile-edit__avatar-preview"
-        />
-        <div v-else class="profile-edit__avatar-preview profile-edit__avatar-preview--empty"></div>
+        <label class="profile-edit__field">
+          <span class="profile-edit__label">› bio</span>
+          <textarea
+            v-model="bio"
+            data-testid="profile-edit-bio"
+            :disabled="submitting"
+            rows="4"
+            class="profile-edit__input profile-edit__input--multi"
+          ></textarea>
+          <small
+            class="profile-edit__counter"
+            :class="{ 'profile-edit__counter--over': !bioValid }"
+          >[ {{ bio.length }} / {{ BIO_MAX }} ]</small>
+        </label>
+      </section>
 
-        <input
-          type="file"
-          accept="image/png,image/jpeg,image/webp"
-          :disabled="uploading || submitting"
-          data-testid="profile-edit-avatar-file"
-          @change="onPickFile"
-        />
-        <small v-if="uploadError" class="profile-edit__error">{{ uploadError }}</small>
+      <section class="profile-edit__group">
+        <span class="profile-edit__label">› avatar</span>
+        <div class="profile-edit__avatar">
+          <div class="profile-edit__slot profile-edit__slot--current">
+            <img
+              v-if="pendingAvatarUrl"
+              :src="pendingAvatarUrl"
+              alt="current avatar"
+              class="profile-edit__slot-img"
+            />
+            <div v-else class="profile-edit__slot-img profile-edit__slot-img--empty">— empty —</div>
+            <span class="profile-edit__slot-tag">[0] current</span>
+          </div>
 
-        <div v-if="history.length > 0" class="profile-edit__history">
-          <button
-            v-for="h in history.filter((x) => x.url !== pendingAvatarUrl)"
-            :key="h.path"
-            type="button"
-            :disabled="uploading || submitting"
-            class="profile-edit__history-item"
-            @click="selectHistoryAvatar(h.url)"
+          <div
+            v-if="history.filter((x) => x.url !== pendingAvatarUrl).length > 0"
+            class="profile-edit__history"
           >
-            <img :src="h.url" alt="past avatar" />
-          </button>
+            <button
+              v-for="(h, i) in history.filter((x) => x.url !== pendingAvatarUrl)"
+              :key="h.path"
+              type="button"
+              :disabled="uploading || submitting"
+              class="profile-edit__slot profile-edit__slot--past"
+              @click="selectHistoryAvatar(h.url)"
+            >
+              <img :src="h.url" alt="past avatar" class="profile-edit__slot-img" />
+              <span class="profile-edit__slot-tag">[{{ i + 1 }}] past</span>
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div class="profile-edit__actions">
+        <label class="profile-edit__upload">
+          <input
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            :disabled="uploading || submitting"
+            data-testid="profile-edit-avatar-file"
+            @change="onPickFile"
+            class="profile-edit__upload-input"
+          />
+          <span class="profile-edit__upload-cta">
+            {{ uploading ? 'uploading…' : '+ upload new · png | jpg | webp · ≤2MB' }}
+          </span>
+        </label>
+        <small v-if="uploadError" class="profile-edit__error">[ {{ uploadError }} ]</small>
+      </section>
+
+      <footer class="profile-edit__actions">
         <button
           type="button"
           :disabled="submitting"
+          class="profile-edit__btn profile-edit__btn--ghost"
           @click="router.push('/profile')"
-        >Cancel</button>
+        >cancel</button>
         <button
           type="submit"
           data-testid="profile-edit-save"
           :disabled="!canSave"
+          class="profile-edit__btn profile-edit__btn--commit"
           @click="onSave"
-        >{{ submitting ? 'Saving…' : 'Save changes' }}</button>
-      </div>
+        >{{ submitting ? 'saving…' : '› save changes' }}</button>
+      </footer>
 
-      <small v-if="saveError" class="profile-edit__error">{{ saveError }}</small>
+      <small v-if="saveError" class="profile-edit__error">[ {{ saveError }} ]</small>
     </form>
-  </main>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 .profile-edit {
-  max-width: 560px;
+  max-width: 90%;
   margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1.25rem 3rem;
+  font-family: $ibmpm;
+  color: $color-text;
 
-  &__form { display: flex; flex-direction: column; gap: 1rem; }
-  &__field, &__avatar { display: flex; flex-direction: column; gap: 0.35rem; }
-  &__field-label { font-size: 0.9rem; color: lighten($color-iron-gray, 20%); }
+  &__pending {
+    padding: 2rem 0;
+    font-family: $ibmpm;
+    color: $color-text;
+    opacity: 0.7;
+  }
 
-  input, textarea {
-    padding: 0.5rem 0.6rem;
-    background: $color-shadow-gray-2;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  // ── Header ──────────────────────────────────────
+  &__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px dashed $color-iron-gray;
+  }
+  &__prompt {
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    color: $color-text;
+    opacity: 0.55;
+  }
+  &__title {
+    margin: 0;
+    font-family: $oxanium;
+    font-size: $fs-h1;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: $color-text;
+    text-shadow: $glow-25-white;
+  }
+
+  // ── Groups ──────────────────────────────────────
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  &__label {
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    color: $color-text;
+    opacity: 0.85;
+  }
+
+  // ── Inputs ──────────────────────────────────────
+  &__input {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    background: $color-onyx;
     color: $color-text;
     border: 1px solid $color-iron-gray;
     border-radius: 4px;
-    font-family: monospace;
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+
+    &:focus {
+      outline: none;
+      border-color: $color-text;
+      box-shadow: $glow-25-gray;
+    }
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+  &__input--multi {
+    resize: vertical;
+    min-height: 6.5rem;
+    line-height: 1.45;
   }
 
-  &__hint    { color: lighten($color-iron-gray, 20%); }
-  &__error   { color: #ff6b6b; }
-  &__counter { align-self: flex-end; color: lighten($color-iron-gray, 20%); }
-  &__counter--over { color: #ff6b6b; }
+  // ── Inline annotations ──────────────────────────
+  &__hint {
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    color: $color-text;
+    opacity: 0.45;
+  }
+  &__counter {
+    align-self: flex-end;
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    color: $color-text;
+    opacity: 0.55;
+  }
+  &__counter--over { color: #ff6b6b; opacity: 1; }
+  &__error {
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    color: #ff6b6b;
+  }
 
-  &__avatar-preview {
-    width: 200px;
-    height: 200px;
+  // ── Avatar slots ────────────────────────────────
+  &__avatar {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  &__slot {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    background: transparent;
+    border: 1px solid $color-iron-gray;
     border-radius: 5px;
+    overflow: hidden;
+    transition: border-color 180ms ease, transform 180ms ease;
+  }
+  &__slot-img {
+    display: block;
     object-fit: cover;
     background: $color-onyx;
   }
-  &__avatar-preview--empty { background: $color-shadow-gray-2; }
-
-  &__history { display: flex; gap: 0.5rem; }
-  &__history-item {
-    padding: 0;
-    border: 1px solid $color-iron-gray;
-    border-radius: 4px;
-    background: transparent;
+  &__slot-img--empty {
+    display: grid;
+    place-items: center;
+    background: $color-shadow-gray-2;
+    color: $color-text;
+    opacity: 0.4;
+    font-family: $ibmpm;
+    font-size: $fs-small;
+  }
+  &__slot-tag {
+    padding: 0.3rem 0.55rem;
+    background: $color-shadow-gray-2;
+    color: $color-text;
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    text-align: left;
+    border-top: 1px solid $color-iron-gray;
+    opacity: 0.75;
+  }
+  &__slot--current {
+    cursor: default;
+    .profile-edit__slot-img { width: 180px; height: 180px; }
+    .profile-edit__slot-tag { opacity: 1; }
+  }
+  &__slot--past {
     cursor: pointer;
-
-    img {
-      display: block;
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 3px;
+    .profile-edit__slot-img { width: 84px; height: 84px; }
+    &:not(:disabled):hover,
+    &:not(:disabled):focus-visible {
+      outline: none;
+      border-color: $color-text;
+      transform: translateY(-2px);
+      .profile-edit__slot-tag { opacity: 1; }
     }
+    &:disabled { opacity: 0.45; cursor: not-allowed; }
+  }
+  &__history {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-self: stretch;
   }
 
+  // ── Upload ──────────────────────────────────────
+  &__upload {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+  }
+  &__upload-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    &:disabled { cursor: not-allowed; }
+  }
+  &__upload-cta {
+    display: inline-block;
+    padding: 0.55rem 0.85rem;
+    border: 1px dashed $color-iron-gray;
+    border-radius: 4px;
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    color: $color-text;
+    opacity: 0.8;
+    transition: opacity 180ms ease, border-color 180ms ease, text-shadow 180ms ease;
+  }
+  &__upload:hover &__upload-cta {
+    opacity: 1;
+    border-color: $color-text;
+    text-shadow: $glow-25-white;
+  }
+
+  // ── Actions ─────────────────────────────────────
   &__actions {
     display: flex;
     justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+    padding-top: 1rem;
+    border-top: 1px dashed $color-iron-gray;
+  }
+  &__btn {
+    padding: 0.6rem 1.25rem;
+    background: transparent;
+    border: 1px solid $color-iron-gray;
+    border-radius: 4px;
+    font-family: $ibmpm;
+    font-size: $fs-small;
+    color: $color-text;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 180ms ease, border-color 180ms ease, text-shadow 180ms ease, background 180ms ease;
+
+    &:disabled { opacity: 0.35; cursor: not-allowed; }
+    &:not(:disabled):hover,
+    &:not(:disabled):focus-visible {
+      outline: none;
+      opacity: 1;
+      border-color: $color-text;
+      text-shadow: $glow-25-white;
+    }
+  }
+  &__btn--commit { background: $color-shadow-gray-2; }
+
+  @media (max-width: $bp-md) {
+    padding: 1.5rem 1rem 2.5rem;
+    &__title { font-size: $fs-h2; }
+    &__slot--current .profile-edit__slot-img { width: 140px; height: 140px; }
   }
 }
 </style>
