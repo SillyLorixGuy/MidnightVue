@@ -12,7 +12,7 @@
             <p>{{ today }}</p>
             <div class="profile-dropdown" @blur="open = false" tabindex="0">
                 <button class="profile-button" @click="open = !open" aria-haspopup="true" :aria-expanded="open">
-                    <img :src="getPfp()" alt="">
+                    <img :src="pfpSrc" alt="">
                 </button>
                 <ul v-if="open" class="profile-menu" role="menu">
                     <template v-if="isAuthenticated">
@@ -283,13 +283,27 @@
 </style>
 
 <script setup lang="ts">
-    import { ref, computed } from 'vue'
+    import { ref, computed, watch } from 'vue'
     import { useRouter } from 'vue-router'
     import { useAuth } from '@/composables/useAuth'
+    import { useProfile } from '@/composables/useProfile'
 
     const open = ref(false)
     const router = useRouter()
     const { isAuthenticated, user, signOut } = useAuth()
+    const { getMyProfile } = useProfile()
+
+    const avatarUrl = ref<string | null>(null)
+    const pfpSrc = computed(() => avatarUrl.value ?? './pfp.png')
+
+    watch(user, async (u) => {
+        if (!u) {
+            avatarUrl.value = null
+            return
+        }
+        const { data } = await getMyProfile()
+        avatarUrl.value = data?.avatar_url ?? null
+    }, { immediate: true })
 
     async function doSignOut() {
         await signOut()
@@ -306,7 +320,4 @@
         return `${weekday} ${day}.${month}.${year}`
     })
 
-    function getPfp() {
-        return './pfp.png';
-    }
 </script>
