@@ -15,6 +15,62 @@
         "confidence": "INFERRED",
         "confidence_score": 0.85,
         "source_file": "docs/superpowers/plans/2026-05-23-entries-page.md"
+      },
+      {
+        "id": "offline_queue_implementation",
+        "label": "Offline Queue Implementation Flow",
+        "nodes": [
+          "task_5_offline_queue_validation",
+          "offline_queue_feature",
+          "pendinentries_module",
+          "thejournal_vue"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md"
+      },
+      {
+        "id": "timer_leak_fix_sequence",
+        "label": "Timer Leak Fix and Quality Review",
+        "nodes": [
+          "task_7_code_quality_review",
+          "timer_leak_issue",
+          "commit_1f56d24",
+          "commit_ac862e4"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md"
+      },
+      {
+        "id": "graphify_change_detection",
+        "label": "Graphify Change Detection Pipeline",
+        "nodes": [
+          "task_8_graphify_update",
+          "graphify_tool",
+          "graph_report"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md"
+      },
+      {
+        "id": "profile_feature_stack",
+        "label": "Profile Feature Full Stack",
+        "nodes": [
+          "profile_page_plan_db_migration",
+          "profile_page_plan_useprofile",
+          "profile_page_plan_theprofileedit",
+          "profile_page_plan_profileheader",
+          "profile_page_plan_profileentrieslist"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md"
       }
     ]
   },
@@ -25,7 +81,7 @@
       "source_file": "vite.config.ts",
       "source_location": "L1",
       "id": "vite_config_ts",
-      "community": 6
+      "community": 13
     },
     {
       "label": "vitest.config.ts",
@@ -33,7 +89,7 @@
       "source_file": "vitest.config.ts",
       "source_location": "L1",
       "id": "vitest_config_ts",
-      "community": 7
+      "community": 14
     },
     {
       "label": "env.d.ts",
@@ -41,7 +97,7 @@
       "source_file": "src\\env.d.ts",
       "source_location": "L1",
       "id": "src_env_d_ts",
-      "community": 8
+      "community": 15
     },
     {
       "label": "main.ts",
@@ -49,7 +105,71 @@
       "source_file": "src\\main.ts",
       "source_location": "L1",
       "id": "src_main_ts",
-      "community": 9
+      "community": 16
+    },
+    {
+      "label": "test-setup.ts",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L1",
+      "id": "src_test_setup_ts",
+      "community": 2
+    },
+    {
+      "label": "InMemoryStorage",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L11",
+      "id": "test_setup_inmemorystorage",
+      "community": 2
+    },
+    {
+      "label": ".length()",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L14",
+      "id": "test_setup_inmemorystorage_length",
+      "community": 2
+    },
+    {
+      "label": ".key()",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L18",
+      "id": "test_setup_inmemorystorage_key",
+      "community": 2
+    },
+    {
+      "label": ".getItem()",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L22",
+      "id": "test_setup_inmemorystorage_getitem",
+      "community": 2
+    },
+    {
+      "label": ".setItem()",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L26",
+      "id": "test_setup_inmemorystorage_setitem",
+      "community": 2
+    },
+    {
+      "label": ".removeItem()",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L30",
+      "id": "test_setup_inmemorystorage_removeitem",
+      "community": 2
+    },
+    {
+      "label": ".clear()",
+      "file_type": "code",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L34",
+      "id": "test_setup_inmemorystorage_clear",
+      "community": 2
     },
     {
       "label": "EntryCard.test.ts",
@@ -57,7 +177,63 @@
       "source_file": "src\\components\\EntryCard.test.ts",
       "source_location": "L1",
       "id": "src_components_entrycard_test_ts",
-      "community": 10
+      "community": 17
+    },
+    {
+      "label": "ProfileEntriesList.test.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L1",
+      "id": "src_components_profileentrieslist_test_ts",
+      "community": 3
+    },
+    {
+      "label": "constructor()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L15",
+      "id": "profileentrieslist_test_constructor",
+      "community": 3
+    },
+    {
+      "label": "observe()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L19",
+      "id": "profileentrieslist_test_observe",
+      "community": 3
+    },
+    {
+      "label": "unobserve()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L20",
+      "id": "profileentrieslist_test_unobserve",
+      "community": 3
+    },
+    {
+      "label": "disconnect()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L21",
+      "id": "profileentrieslist_test_disconnect",
+      "community": 3
+    },
+    {
+      "label": "entry()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L30",
+      "id": "profileentrieslist_test_entry",
+      "community": 3
+    },
+    {
+      "label": "ProfileHeader.test.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\ProfileHeader.test.ts",
+      "source_location": "L1",
+      "id": "src_components_profileheader_test_ts",
+      "community": 18
     },
     {
       "label": "useAnchors.test.ts",
@@ -65,7 +241,7 @@
       "source_file": "src\\composables\\useAnchors.test.ts",
       "source_location": "L1",
       "id": "src_composables_useanchors_test_ts",
-      "community": 11
+      "community": 19
     },
     {
       "label": "useAnchors.ts",
@@ -73,7 +249,7 @@
       "source_file": "src\\composables\\useAnchors.ts",
       "source_location": "L1",
       "id": "src_composables_useanchors_ts",
-      "community": 2
+      "community": 8
     },
     {
       "label": "currentUserId()",
@@ -81,7 +257,7 @@
       "source_file": "src\\composables\\useAnchors.ts",
       "source_location": "L4",
       "id": "useanchors_currentuserid",
-      "community": 2
+      "community": 8
     },
     {
       "label": "useAnchors()",
@@ -89,7 +265,7 @@
       "source_file": "src\\composables\\useAnchors.ts",
       "source_location": "L9",
       "id": "useanchors_useanchors",
-      "community": 2
+      "community": 8
     },
     {
       "label": "useAuth.test.ts",
@@ -97,7 +273,7 @@
       "source_file": "src\\composables\\useAuth.test.ts",
       "source_location": "L1",
       "id": "src_composables_useauth_test_ts",
-      "community": 12
+      "community": 20
     },
     {
       "label": "useAuth.ts",
@@ -105,7 +281,7 @@
       "source_file": "src\\composables\\useAuth.ts",
       "source_location": "L1",
       "id": "src_composables_useauth_ts",
-      "community": 0
+      "community": 4
     },
     {
       "label": "origin()",
@@ -113,7 +289,7 @@
       "source_file": "src\\composables\\useAuth.ts",
       "source_location": "L9",
       "id": "useauth_origin",
-      "community": 0
+      "community": 4
     },
     {
       "label": "generateUsername()",
@@ -121,7 +297,7 @@
       "source_file": "src\\composables\\useAuth.ts",
       "source_location": "L13",
       "id": "useauth_generateusername",
-      "community": 0
+      "community": 4
     },
     {
       "label": "ensureProfile()",
@@ -129,7 +305,7 @@
       "source_file": "src\\composables\\useAuth.ts",
       "source_location": "L19",
       "id": "useauth_ensureprofile",
-      "community": 0
+      "community": 4
     },
     {
       "label": "applySession()",
@@ -137,7 +313,7 @@
       "source_file": "src\\composables\\useAuth.ts",
       "source_location": "L40",
       "id": "useauth_applysession",
-      "community": 0
+      "community": 4
     },
     {
       "label": "useAuth()",
@@ -145,7 +321,7 @@
       "source_file": "src\\composables\\useAuth.ts",
       "source_location": "L49",
       "id": "useauth_useauth",
-      "community": 0
+      "community": 4
     },
     {
       "label": "useEntries.test.ts",
@@ -153,7 +329,7 @@
       "source_file": "src\\composables\\useEntries.test.ts",
       "source_location": "L1",
       "id": "src_composables_useentries_test_ts",
-      "community": 13
+      "community": 21
     },
     {
       "label": "useEntries.ts",
@@ -161,7 +337,7 @@
       "source_file": "src\\composables\\useEntries.ts",
       "source_location": "L1",
       "id": "src_composables_useentries_ts",
-      "community": 3
+      "community": 9
     },
     {
       "label": "currentUserId()",
@@ -169,7 +345,7 @@
       "source_file": "src\\composables\\useEntries.ts",
       "source_location": "L18",
       "id": "useentries_currentuserid",
-      "community": 3
+      "community": 9
     },
     {
       "label": "useEntries()",
@@ -177,7 +353,95 @@
       "source_file": "src\\composables\\useEntries.ts",
       "source_location": "L23",
       "id": "useentries_useentries",
-      "community": 3
+      "community": 9
+    },
+    {
+      "label": "useProfile.test.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useProfile.test.ts",
+      "source_location": "L1",
+      "id": "src_composables_useprofile_test_ts",
+      "community": 22
+    },
+    {
+      "label": "useProfile.ts",
+      "file_type": "code",
+      "source_file": "src\\composables\\useProfile.ts",
+      "source_location": "L1",
+      "id": "src_composables_useprofile_ts",
+      "community": 10
+    },
+    {
+      "label": "currentUserId()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useProfile.ts",
+      "source_location": "L34",
+      "id": "useprofile_currentuserid",
+      "community": 10
+    },
+    {
+      "label": "useProfile()",
+      "file_type": "code",
+      "source_file": "src\\composables\\useProfile.ts",
+      "source_location": "L39",
+      "id": "useprofile_useprofile",
+      "community": 10
+    },
+    {
+      "label": "pendingEntries.test.ts",
+      "file_type": "code",
+      "source_file": "src\\lib\\pendingEntries.test.ts",
+      "source_location": "L1",
+      "id": "src_lib_pendingentries_test_ts",
+      "community": 23
+    },
+    {
+      "label": "pendingEntries.ts",
+      "file_type": "code",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L1",
+      "id": "src_lib_pendingentries_ts",
+      "community": 5
+    },
+    {
+      "label": "read()",
+      "file_type": "code",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L11",
+      "id": "pendingentries_read",
+      "community": 5
+    },
+    {
+      "label": "write()",
+      "file_type": "code",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L22",
+      "id": "pendingentries_write",
+      "community": 5
+    },
+    {
+      "label": "add()",
+      "file_type": "code",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L31",
+      "id": "pendingentries_add",
+      "community": 5
+    },
+    {
+      "label": "remove()",
+      "file_type": "code",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L37",
+      "id": "pendingentries_remove",
+      "community": 5
+    },
+    {
+      "label": "count()",
+      "file_type": "code",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L41",
+      "id": "pendingentries_count",
+      "community": 5
     },
     {
       "label": "supabase.ts",
@@ -185,7 +449,7 @@
       "source_file": "src\\lib\\supabase.ts",
       "source_location": "L1",
       "id": "src_lib_supabase_ts",
-      "community": 14
+      "community": 24
     },
     {
       "label": "main.ts",
@@ -193,7 +457,15 @@
       "source_file": "src\\router\\main.ts",
       "source_location": "L1",
       "id": "src_router_main_ts",
-      "community": 15
+      "community": 25
+    },
+    {
+      "label": "TheProfileEdit.test.ts",
+      "file_type": "code",
+      "source_file": "src\\views\\TheProfileEdit.test.ts",
+      "source_location": "L1",
+      "id": "src_views_theprofileedit_test_ts",
+      "community": 26
     },
     {
       "label": "Vue 3 + TypeScript + Vite Template",
@@ -205,7 +477,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_vue3_typescript_vite",
-      "community": 4
+      "community": 11
     },
     {
       "label": "Vue 3 <script setup> SFCs",
@@ -217,7 +489,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_script_setup_sfc",
-      "community": 4
+      "community": 11
     },
     {
       "label": "Vue Docs TypeScript Guide",
@@ -229,7 +501,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_vue_typescript_guide",
-      "community": 4
+      "community": 11
     },
     {
       "label": "Entries Page + Supabase Backend Implementation Plan",
@@ -241,7 +513,235 @@
       "author": null,
       "contributor": null,
       "id": "plan_entries_page_supabase",
-      "community": 5
+      "community": 12
+    },
+    {
+      "label": "Journal Submit \u00e2\u20ac\u201d Completion Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-05-26T00:14:38Z",
+      "author": null,
+      "contributor": null,
+      "id": "plan_journal_submit_completion",
+      "community": 0
+    },
+    {
+      "label": "Task 1: Vitest Infrastructure",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_1_vitest_infra",
+      "community": 0
+    },
+    {
+      "label": "Task 2: useEntries Composable with createEntry and countMyEntries",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_2_useentries_composable",
+      "community": 0
+    },
+    {
+      "label": "Task 3: pendingEntries localStorage Module",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_3_pendinentries",
+      "community": 0
+    },
+    {
+      "label": "Task 4: TheJournal Three-State submitStatus Slot",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_4_submitstatus_slot",
+      "community": 0
+    },
+    {
+      "label": "Task 5: TheJournal Offline Queue and Validation",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_5_offline_queue_validation",
+      "community": 0
+    },
+    {
+      "label": "Task 6: TheJournal.vue Vitest Component Tests",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_6_vitest_component_tests",
+      "community": 0
+    },
+    {
+      "label": "Task 7: Code Quality Review",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_7_code_quality_review",
+      "community": 6
+    },
+    {
+      "label": "Task 8: Graphify Update Run",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "task_8_graphify_update",
+      "community": 0
+    },
+    {
+      "label": "Commit e8e40d3: supabase insert",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "commit_e8e40d3",
+      "community": 27
+    },
+    {
+      "label": "Commit b51ca54: submitStatus refactor",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "commit_b51ca54",
+      "community": 28
+    },
+    {
+      "label": "Commit 843cacc: offline queue + validation",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "commit_843cacc",
+      "community": 0
+    },
+    {
+      "label": "Commit 1f56d24: timer fix",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "commit_1f56d24",
+      "community": 6
+    },
+    {
+      "label": "Commit ac862e4: timer fix (duplicate)",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "commit_ac862e4",
+      "community": 6
+    },
+    {
+      "label": "Graphify Tool: AST Extraction and Change Detection",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_tool",
+      "community": 0
+    },
+    {
+      "label": "TheJournal.vue Component",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "thejournal_vue",
+      "community": 0
+    },
+    {
+      "label": "useEntries Composable",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "useentries_composable",
+      "community": 0
+    },
+    {
+      "label": "pendingEntries localStorage Module",
+      "file_type": "code",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pendinentries_module",
+      "community": 0
+    },
+    {
+      "label": "Timer Leak Issue",
+      "file_type": "bug",
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "timer_leak_issue",
+      "community": 6
     },
     {
       "label": "Entries Page + Supabase Backend Design Spec",
@@ -253,7 +753,43 @@
       "author": null,
       "contributor": null,
       "id": "spec_entries_page_design",
-      "community": 5
+      "community": 12
+    },
+    {
+      "label": "Journal Submit \u00e2\u20ac\u201d Completion Pass",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-05-26T00:12:38Z",
+      "author": null,
+      "contributor": null,
+      "id": "spec_journal_submit_completion",
+      "community": 0
+    },
+    {
+      "label": "Offline Queue Feature",
+      "file_type": "feature",
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "offline_queue_feature",
+      "community": 0
+    },
+    {
+      "label": "Content Validation",
+      "file_type": "feature",
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "content_validation_feature",
+      "community": 0
     },
     {
       "label": "Supabase Setup Guide",
@@ -265,7 +801,7 @@
       "author": null,
       "contributor": null,
       "id": "supabase_readme_setup",
-      "community": 5
+      "community": 12
     },
     {
       "label": "Default profile picture (pfp.png) \u2014 close-up meme-style photo of a white cat with tongue slightly out",
@@ -277,7 +813,7 @@
       "author": null,
       "contributor": null,
       "id": "pfp_image",
-      "community": 1
+      "community": 7
     },
     {
       "label": "White cat with dark eyes and protruding tongue (blep), grainy meme aesthetic",
@@ -289,7 +825,7 @@
       "author": null,
       "contributor": null,
       "id": "pfp_subject_cat",
-      "community": 1
+      "community": 7
     },
     {
       "label": "Default user avatar role in MidnightVue journaling app \u2014 playful, lighthearted placeholder identity",
@@ -301,7 +837,7 @@
       "author": null,
       "contributor": null,
       "id": "pfp_role_default_avatar",
-      "community": 1
+      "community": 7
     },
     {
       "label": "Mood: humorous, casual, internet-meme tone \u2014 softens the intimate journaling context",
@@ -313,10 +849,346 @@
       "author": null,
       "contributor": null,
       "id": "pfp_mood_humor",
+      "community": 7
+    },
+    {
+      "label": "Profile Page Implementation Goal",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_goal",
       "community": 1
+    },
+    {
+      "label": "Profile Page Architecture",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_architecture",
+      "community": 1
+    },
+    {
+      "label": "useProfile Composable Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_useprofile",
+      "community": 1
+    },
+    {
+      "label": "TheProfileEdit View Plan",
+      "file_type": "document",
+      "source_file": "docs/superpours/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_theprofileedit",
+      "community": 1
+    },
+    {
+      "label": "Steam-style Avatar History Feature",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_avatar_history",
+      "community": 1
+    },
+    {
+      "label": "Supabase RPC get_my_profile / update_my_profile",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_supabase_rpc",
+      "community": 1
+    },
+    {
+      "label": "DB Migration 0002_profile_rpc.sql",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_db_migration",
+      "community": 1
+    },
+    {
+      "label": "ProfileHeader Component Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_profileheader",
+      "community": 1
+    },
+    {
+      "label": "ProfileEntriesList Component Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_profileentrieslist",
+      "community": 1
+    },
+    {
+      "label": "Profile Page Design Spec",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-26-profile-page-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_design_spec",
+      "community": 1
+    },
+    {
+      "label": "MidnightVue Graph Report",
+      "file_type": "document",
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graph_report_midnightvue",
+      "community": 1
+    },
+    {
+      "label": "Username Validation Rule (3-20 chars a-z0-9_)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_username_validation",
+      "community": 1
+    },
+    {
+      "label": "Bio Max 250 Chars Constraint",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_bio_limit",
+      "community": 1
+    },
+    {
+      "label": "Avatar 3-File Retention Policy",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "profile_page_plan_avatar_3file_retention",
+      "community": 1
+    },
+    {
+      "label": "Default Avatar Image",
+      "file_type": "image",
+      "source_file": "public/default-avatar.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "public_default_avatar",
+      "community": 1
+    },
+    {
+      "label": "MidnightVue Favicon",
+      "file_type": "image",
+      "source_file": "public/favicon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "public_favicon",
+      "community": 29
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_test_setup_ts",
+      "_tgt": "test_setup_inmemorystorage",
+      "source": "src_test_setup_ts",
+      "target": "test_setup_inmemorystorage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "test_setup_inmemorystorage",
+      "_tgt": "test_setup_inmemorystorage_length",
+      "source": "test_setup_inmemorystorage",
+      "target": "test_setup_inmemorystorage_length",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "test_setup_inmemorystorage",
+      "_tgt": "test_setup_inmemorystorage_key",
+      "source": "test_setup_inmemorystorage",
+      "target": "test_setup_inmemorystorage_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "test_setup_inmemorystorage",
+      "_tgt": "test_setup_inmemorystorage_getitem",
+      "source": "test_setup_inmemorystorage",
+      "target": "test_setup_inmemorystorage_getitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "test_setup_inmemorystorage",
+      "_tgt": "test_setup_inmemorystorage_setitem",
+      "source": "test_setup_inmemorystorage",
+      "target": "test_setup_inmemorystorage_setitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "test_setup_inmemorystorage",
+      "_tgt": "test_setup_inmemorystorage_removeitem",
+      "source": "test_setup_inmemorystorage",
+      "target": "test_setup_inmemorystorage_removeitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\test-setup.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "test_setup_inmemorystorage",
+      "_tgt": "test_setup_inmemorystorage_clear",
+      "source": "test_setup_inmemorystorage",
+      "target": "test_setup_inmemorystorage_clear",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "src_components_profileentrieslist_test_ts",
+      "_tgt": "profileentrieslist_test_constructor",
+      "source": "src_components_profileentrieslist_test_ts",
+      "target": "profileentrieslist_test_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "src_components_profileentrieslist_test_ts",
+      "_tgt": "profileentrieslist_test_observe",
+      "source": "src_components_profileentrieslist_test_ts",
+      "target": "profileentrieslist_test_observe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "src_components_profileentrieslist_test_ts",
+      "_tgt": "profileentrieslist_test_unobserve",
+      "source": "src_components_profileentrieslist_test_ts",
+      "target": "profileentrieslist_test_unobserve",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "src_components_profileentrieslist_test_ts",
+      "_tgt": "profileentrieslist_test_disconnect",
+      "source": "src_components_profileentrieslist_test_ts",
+      "target": "profileentrieslist_test_disconnect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProfileEntriesList.test.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "src_components_profileentrieslist_test_ts",
+      "_tgt": "profileentrieslist_test_entry",
+      "source": "src_components_profileentrieslist_test_ts",
+      "target": "profileentrieslist_test_entry",
+      "confidence_score": 1.0
+    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -450,6 +1322,150 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useProfile.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "src_composables_useprofile_ts",
+      "_tgt": "useprofile_currentuserid",
+      "source": "src_composables_useprofile_ts",
+      "target": "useprofile_currentuserid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\composables\\useProfile.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "src_composables_useprofile_ts",
+      "_tgt": "useprofile_useprofile",
+      "source": "src_composables_useprofile_ts",
+      "target": "useprofile_useprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_lib_pendingentries_ts",
+      "_tgt": "pendingentries_read",
+      "source": "src_lib_pendingentries_ts",
+      "target": "pendingentries_read",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "src_lib_pendingentries_ts",
+      "_tgt": "pendingentries_write",
+      "source": "src_lib_pendingentries_ts",
+      "target": "pendingentries_write",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "src_lib_pendingentries_ts",
+      "_tgt": "pendingentries_add",
+      "source": "src_lib_pendingentries_ts",
+      "target": "pendingentries_add",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "src_lib_pendingentries_ts",
+      "_tgt": "pendingentries_remove",
+      "source": "src_lib_pendingentries_ts",
+      "target": "pendingentries_remove",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "src_lib_pendingentries_ts",
+      "_tgt": "pendingentries_count",
+      "source": "src_lib_pendingentries_ts",
+      "target": "pendingentries_count",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_src": "pendingentries_add",
+      "_tgt": "pendingentries_read",
+      "source": "pendingentries_read",
+      "target": "pendingentries_add",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "pendingentries_remove",
+      "_tgt": "pendingentries_read",
+      "source": "pendingentries_read",
+      "target": "pendingentries_remove",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "pendingentries_count",
+      "_tgt": "pendingentries_read",
+      "source": "pendingentries_read",
+      "target": "pendingentries_count",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "pendingentries_add",
+      "_tgt": "pendingentries_write",
+      "source": "pendingentries_write",
+      "target": "pendingentries_add",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\pendingEntries.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "pendingentries_remove",
+      "_tgt": "pendingentries_write",
+      "source": "pendingentries_write",
+      "target": "pendingentries_remove",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -498,6 +1514,318 @@
       "target": "supabase_readme_setup"
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "spec_journal_submit_completion",
+      "source": "plan_journal_submit_completion",
+      "target": "spec_journal_submit_completion"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_1_vitest_infra",
+      "source": "plan_journal_submit_completion",
+      "target": "task_1_vitest_infra"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_2_useentries_composable",
+      "source": "plan_journal_submit_completion",
+      "target": "task_2_useentries_composable"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_3_pendinentries",
+      "source": "plan_journal_submit_completion",
+      "target": "task_3_pendinentries"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_4_submitstatus_slot",
+      "source": "plan_journal_submit_completion",
+      "target": "task_4_submitstatus_slot"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_5_offline_queue_validation",
+      "source": "plan_journal_submit_completion",
+      "target": "task_5_offline_queue_validation"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_6_vitest_component_tests",
+      "source": "plan_journal_submit_completion",
+      "target": "task_6_vitest_component_tests"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_7_code_quality_review",
+      "source": "plan_journal_submit_completion",
+      "target": "task_7_code_quality_review"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "plan_journal_submit_completion",
+      "_tgt": "task_8_graphify_update",
+      "source": "plan_journal_submit_completion",
+      "target": "task_8_graphify_update"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_journal_submit_completion",
+      "_tgt": "task_1_vitest_infra",
+      "source": "task_1_vitest_infra",
+      "target": "spec_journal_submit_completion"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_2_useentries_composable",
+      "_tgt": "useentries_composable",
+      "source": "task_2_useentries_composable",
+      "target": "useentries_composable"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_3_pendinentries",
+      "_tgt": "pendinentries_module",
+      "source": "task_3_pendinentries",
+      "target": "pendinentries_module"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_4_submitstatus_slot",
+      "_tgt": "thejournal_vue",
+      "source": "task_4_submitstatus_slot",
+      "target": "thejournal_vue"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_5_offline_queue_validation",
+      "_tgt": "thejournal_vue",
+      "source": "task_5_offline_queue_validation",
+      "target": "thejournal_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_5_offline_queue_validation",
+      "_tgt": "offline_queue_feature",
+      "source": "task_5_offline_queue_validation",
+      "target": "offline_queue_feature"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_5_offline_queue_validation",
+      "_tgt": "content_validation_feature",
+      "source": "task_5_offline_queue_validation",
+      "target": "content_validation_feature"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_6_vitest_component_tests",
+      "_tgt": "thejournal_vue",
+      "source": "task_6_vitest_component_tests",
+      "target": "thejournal_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_7_code_quality_review",
+      "_tgt": "timer_leak_issue",
+      "source": "task_7_code_quality_review",
+      "target": "timer_leak_issue"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "task_8_graphify_update",
+      "_tgt": "graphify_tool",
+      "source": "task_8_graphify_update",
+      "target": "graphify_tool"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "commit_843cacc",
+      "_tgt": "offline_queue_feature",
+      "source": "commit_843cacc",
+      "target": "offline_queue_feature"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "commit_1f56d24",
+      "_tgt": "timer_leak_issue",
+      "source": "commit_1f56d24",
+      "target": "timer_leak_issue"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "commit_ac862e4",
+      "_tgt": "commit_1f56d24",
+      "source": "commit_1f56d24",
+      "target": "commit_ac862e4"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "commit_ac862e4",
+      "_tgt": "timer_leak_issue",
+      "source": "commit_ac862e4",
+      "target": "timer_leak_issue"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "thejournal_vue",
+      "_tgt": "useentries_composable",
+      "source": "thejournal_vue",
+      "target": "useentries_composable"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "thejournal_vue",
+      "_tgt": "pendinentries_module",
+      "source": "thejournal_vue",
+      "target": "pendinentries_module"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "offline_queue_feature",
+      "_tgt": "pendinentries_module",
+      "source": "pendinentries_module",
+      "target": "offline_queue_feature"
+    },
+    {
       "relation": "shares_data_with",
       "confidence": "INFERRED",
       "confidence_score": 0.7,
@@ -508,6 +1836,30 @@
       "_tgt": "supabase_readme_setup",
       "source": "spec_entries_page_design",
       "target": "supabase_readme_setup"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_journal_submit_completion",
+      "_tgt": "offline_queue_feature",
+      "source": "spec_journal_submit_completion",
+      "target": "offline_queue_feature"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/superpowers/specs/2026-05-25-journal-submit-completion-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_journal_submit_completion",
+      "_tgt": "content_validation_feature",
+      "source": "spec_journal_submit_completion",
+      "target": "content_validation_feature"
     },
     {
       "relation": "depicts",
@@ -556,6 +1908,186 @@
       "_tgt": "pfp_mood_humor",
       "source": "pfp_role_default_avatar",
       "target": "pfp_mood_humor"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_goal",
+      "_tgt": "profile_page_plan_architecture",
+      "source": "profile_page_plan_goal",
+      "target": "profile_page_plan_architecture"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_goal",
+      "_tgt": "profile_page_plan_avatar_history",
+      "source": "profile_page_plan_goal",
+      "target": "profile_page_plan_avatar_history"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_goal",
+      "_tgt": "profile_page_design_spec",
+      "source": "profile_page_plan_goal",
+      "target": "profile_page_design_spec"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "graph_report_midnightvue",
+      "_tgt": "profile_page_plan_goal",
+      "source": "profile_page_plan_goal",
+      "target": "graph_report_midnightvue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_architecture",
+      "_tgt": "profile_page_plan_useprofile",
+      "source": "profile_page_plan_architecture",
+      "target": "profile_page_plan_useprofile"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_architecture",
+      "_tgt": "profile_page_plan_theprofileedit",
+      "source": "profile_page_plan_architecture",
+      "target": "profile_page_plan_theprofileedit"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_architecture",
+      "_tgt": "profile_page_plan_supabase_rpc",
+      "source": "profile_page_plan_architecture",
+      "target": "profile_page_plan_supabase_rpc"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 4",
+      "weight": 1.0,
+      "_src": "profile_page_plan_useprofile",
+      "_tgt": "profile_page_plan_avatar_3file_retention",
+      "source": "profile_page_plan_useprofile",
+      "target": "profile_page_plan_avatar_3file_retention"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_profileheader",
+      "_tgt": "profile_page_plan_useprofile",
+      "source": "profile_page_plan_useprofile",
+      "target": "profile_page_plan_profileheader"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_profileentrieslist",
+      "_tgt": "profile_page_plan_useprofile",
+      "source": "profile_page_plan_useprofile",
+      "target": "profile_page_plan_profileentrieslist"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 8",
+      "weight": 1.0,
+      "_src": "profile_page_plan_theprofileedit",
+      "_tgt": "profile_page_plan_username_validation",
+      "source": "profile_page_plan_theprofileedit",
+      "target": "profile_page_plan_username_validation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": "Task 8",
+      "weight": 1.0,
+      "_src": "profile_page_plan_theprofileedit",
+      "_tgt": "profile_page_plan_bio_limit",
+      "source": "profile_page_plan_theprofileedit",
+      "target": "profile_page_plan_bio_limit"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_avatar_history",
+      "_tgt": "profile_page_plan_avatar_3file_retention",
+      "source": "profile_page_plan_avatar_history",
+      "target": "profile_page_plan_avatar_3file_retention"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/default-avatar.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "public_default_avatar",
+      "_tgt": "profile_page_plan_avatar_history",
+      "source": "profile_page_plan_avatar_history",
+      "target": "public_default_avatar"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "profile_page_plan_db_migration",
+      "_tgt": "profile_page_plan_supabase_rpc",
+      "source": "profile_page_plan_supabase_rpc",
+      "target": "profile_page_plan_db_migration"
     }
   ],
   "hyperedges": [
@@ -571,6 +2103,62 @@
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "source_file": "docs/superpowers/plans/2026-05-23-entries-page.md"
+    },
+    {
+      "id": "offline_queue_implementation",
+      "label": "Offline Queue Implementation Flow",
+      "nodes": [
+        "task_5_offline_queue_validation",
+        "offline_queue_feature",
+        "pendinentries_module",
+        "thejournal_vue"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md"
+    },
+    {
+      "id": "timer_leak_fix_sequence",
+      "label": "Timer Leak Fix and Quality Review",
+      "nodes": [
+        "task_7_code_quality_review",
+        "timer_leak_issue",
+        "commit_1f56d24",
+        "commit_ac862e4"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md"
+    },
+    {
+      "id": "graphify_change_detection",
+      "label": "Graphify Change Detection Pipeline",
+      "nodes": [
+        "task_8_graphify_update",
+        "graphify_tool",
+        "graph_report"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-25-journal-submit-completion.md"
+    },
+    {
+      "id": "profile_feature_stack",
+      "label": "Profile Feature Full Stack",
+      "nodes": [
+        "profile_page_plan_db_migration",
+        "profile_page_plan_useprofile",
+        "profile_page_plan_theprofileedit",
+        "profile_page_plan_profileheader",
+        "profile_page_plan_profileentrieslist"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "docs/superpowers/plans/2026-05-26-profile-page.md"
     }
   ]
 }

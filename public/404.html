@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Midnight</title>
+    <script>
+      // SPA fallback for GitHub Pages: rewrite the deep path into a query
+      // string the index.html bootstrap can decode back into a real route.
+      // Adapted from rafgraph/spa-github-pages (MIT).
+      (function () {
+        var segmentCount = 1; // strip /MidnightVue/ from the path
+        var l = window.location;
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
