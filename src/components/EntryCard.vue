@@ -109,13 +109,19 @@
         </svg>
       </button>
 
-      <!-- Center: share code -->
+      <!-- Center: share code (click-to-copy when revealed) -->
       <p
         class="entry-card__share-code"
-        :class="{ 'is-blurred': !revealed }"
+        :class="{ 'is-blurred': !revealed, 'is-copyable': revealed, 'is-copied': copied }"
         data-testid="share-code"
         aria-live="polite"
-      >{{ entry.share_code }}</p>
+        :role="revealed ? 'button' : undefined"
+        :tabindex="revealed ? 0 : -1"
+        :title="revealed ? 'Click to copy' : undefined"
+        @click="copyShareCode"
+        @keydown.enter.prevent="copyShareCode"
+        @keydown.space.prevent="copyShareCode"
+      >{{ copied ? '[ copied ]' : entry.share_code }}</p>
 
       <!-- Right: anchor/bookmark toggle -->
       <button
@@ -167,6 +173,20 @@ defineEmits<{
 
 const revealed = ref(false)
 const open = ref(true)
+const copied = ref(false)
+let copyTimer: ReturnType<typeof setTimeout> | null = null
+
+async function copyShareCode() {
+  if (!revealed.value) return
+  try {
+    await navigator.clipboard.writeText(props.entry.share_code)
+    copied.value = true
+    if (copyTimer) clearTimeout(copyTimer)
+    copyTimer = setTimeout(() => { copied.value = false }, 1200)
+  } catch {
+    // Clipboard API unavailable — silently no-op
+  }
+}
 
 const formattedDate = computed(() => {
   const d = new Date(props.entry.created_at)
@@ -382,17 +402,42 @@ const formattedTime = computed(() => {
     font-weight: 400;
     font-size: 12px;
     color: $color-text;
-    transition: filter 0.25s ease;
+    transition:
+      filter 0.25s ease,
+      color 180ms ease,
+      text-shadow 180ms ease;
     text-align: center;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 0 6px;
+    cursor: default;
+    background: none;
+    border: none;
 
     &.is-blurred {
       filter: blur(2px);
       user-select: none;
+    }
+
+    &.is-copyable {
+      cursor: pointer;
+
+      &:hover {
+        text-shadow: 0 0 4px rgba(255, 255, 255, 0.45);
+      }
+
+      &:focus-visible {
+        outline: 1px solid rgba(255, 255, 255, 0.45);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+    }
+
+    &.is-copied {
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.55);
     }
   }
 
