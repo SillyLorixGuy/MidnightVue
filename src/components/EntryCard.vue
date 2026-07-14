@@ -172,7 +172,7 @@ defineEmits<{
 }>()
 
 const revealed = ref(false)
-const open = ref(true)
+const open = ref(false)
 const copied = ref(false)
 let copyTimer: ReturnType<typeof setTimeout> | null = null
 

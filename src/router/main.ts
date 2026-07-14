@@ -29,7 +29,7 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true },
   },
   { path: '/login', component: () => import('@/views/AuthLogin.vue') },
-  { path: '/signup', component: () => import('@/views/AuthSignup.vue') },
+  //{ path: '/signup', component: () => import('@/views/AuthSignup.vue') },
   { path: '/forgot-password', component: () => import('@/views/AuthForgotPassword.vue') },
   { path: '/reset-password', component: () => import('@/views/AuthResetPassword.vue') },
 ]
